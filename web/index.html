@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>万象棋 AI 教练</title>
+<style>
+  :root {
+    --bg: #f6f7f8;
+    --surface: #ffffff;
+    --border: #e3e6ea;
+    --text: #1b1f24;
+    --muted: #6b7280;
+    --brand: #1a7f4b;
+    --danger: #b42318;
+    --radius: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16181c; --surface:#1e2126; --border:#31353c; --text:#e7e9ec; --muted:#9aa2ad; --brand:#3fae72; --danger:#f0837a; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px 64px;
+    background: var(--bg); color: var(--text);
+    font: 14px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", Roboto, sans-serif;
+  }
+  header, main { max-width: 880px; margin: 0 auto; }
+  header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  h1 { font-size: 20px; margin: 0; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+  .badge {
+    font-size: 12px; padding: 3px 10px; border-radius: 999px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+  }
+  .badge.on { color: var(--brand); border-color: currentColor; }
+  .badge.off { color: var(--danger); border-color: currentColor; }
+  .warn {
+    background: var(--surface); border: 1px solid var(--danger); color: var(--danger);
+    border-radius: var(--radius); padding: 12px 16px; margin-bottom: 16px; font-size: 13px;
+  }
+  .warn code { color: inherit; border-color: currentColor; }
+  .chips-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .chips-head .hint { margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  /* 推荐提问区当前已屏蔽；display:flex 会盖掉 hidden，故需显式声明 */
+  .chips[hidden], .chips-head[hidden] { display: none; }
+  .chip {
+    font-size: 13px; padding: 5px 12px; border-radius: 999px; text-align: left;
+    color: var(--text); background: var(--bg); border: 1px solid var(--border); cursor: pointer;
+  }
+  .chip:hover { color: var(--brand); border-color: var(--brand); }
+  button.ghost {
+    background: none; color: var(--muted); border: 1px solid var(--border);
+    padding: 5px 12px; font-size: 13px;
+  }
+  button.ghost:hover { color: var(--brand); border-color: var(--brand); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
+  }
+  h2 { font-size: 15px; margin: 0 0 6px; }
+  .hint { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  input[type=password], textarea {
+    flex: 1 1 320px; width: 100%; padding: 9px 11px; font: inherit;
+    color: var(--text); background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px;
+  }
+  textarea { flex-basis: 100%; resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+  button {
+    padding: 9px 16px; font: inherit; cursor: pointer;
+    color: #fff; background: var(--brand); border: 1px solid transparent; border-radius: 6px;
+  }
+  button:disabled { opacity: .55; cursor: default; }
+  .check { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+  .field { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+  select {
+    padding: 7px 10px; font: inherit; color: var(--text); background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px;
+  }
+  .status { margin-top: 10px; font-size: 13px; color: var(--muted); min-height: 18px; white-space: pre-wrap; }
+  .status.err { color: var(--danger); }
+  code { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; font-size: 12px; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li { border-bottom: 1px solid var(--border); }
+  .list li:last-child { border-bottom: 0; }
+  .list button {
+    width: 100%; text-align: left; background: none; color: var(--brand);
+    border: 0; padding: 9px 2px; font-size: 13px;
+  }
+  .report { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .report h1 { font-size: 18px; margin: 12px 0 8px; }
+  .report h2 { font-size: 15px; margin: 16px 0 6px; }
+  .report h3 { font-size: 14px; margin: 12px 0 4px; }
+  .report p { margin: 6px 0; }
+  .report ul { margin: 6px 0; padding-left: 22px; }
+  .report li { margin: 2px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>万象棋 AI 教练</h1>
+  <div class="badges" id="badges">
+    <span class="badge">加载中…</span>
+  </div>
+</header>
+
+<main>
+  <div class="warn" id="fileWarn" hidden>
+    当前页面是以 <code>file://</code> 直接打开的，所有接口调用都会失败（Failed to fetch）。
+    请先双击项目根目录的 <code>start.cmd</code> 启动服务，再访问 <code>http://127.0.0.1:8787</code>。
+  </div>
+
+  <section class="card">
+    <h2>1. API Key</h2>
+    <p class="hint">
+      仅保存在本机 <code>data/.secrets.json</code>（已在 .gitignore）。保存后本框立即清空，
+      页面与接口都不会再读到明文。
+    </p>
+    <div class="row">
+      <input id="keyInput" type="password" placeholder="sk-…" autocomplete="off" spellcheck="false">
+      <button id="keySave">保存</button>
+    </div>
+    <div class="status" id="keyStatus"></div>
+  </section>
+
+  <section class="card">
+    <h2>2. 采集快照</h2>
+    <p class="hint">一键采集今日快照：万象大赛 + 钻石狂潮（大师场）。手动触发、跑完即停；同一天已有快照会跳过；遇限流立即熔断且不落盘。</p>
+    <div class="row">
+      <button id="collectBtn">一键采集</button>
+      <label class="check"><input type="checkbox" id="forceChk"> 强制重采</label>
+    </div>
+    <div class="status" id="collectStatus"></div>
+  </section>
+
+  <section class="card">
+    <h2>3. 生成报告</h2>
+    <div class="row" id="reportModeRow">
+      <label class="field">分析模式
+        <select id="reportModeSelect"></select>
+      </label>
+    </div>
+    <div class="chips-head" hidden>
+      <p class="hint">点推荐问题快速填入，也可自己写；留空则输出「版本环境速览」。</p>
+      <button id="angleRefresh" class="ghost">换一批</button>
+    </div>
+    <div class="chips" id="angleChips" hidden></div>
+    <p class="hint">输入本次分析角度；留空则输出「版本环境速览」。</p>
+    <div class="row">
+      <textarea id="angleInput" rows="3" placeholder="例如：本版登顶率最高的英雄强在哪，我该照着练吗"></textarea>
+      <button id="reportBtn">生成报告</button>
+    </div>
+    <div class="status" id="reportStatus"></div>
+  </section>
+
+  <section class="card">
+    <h2>4. 历史报告</h2>
+    <ul class="list" id="reportList"></ul>
+    <div class="status" id="listStatus"></div>
+    <article class="report" id="reportView" hidden></article>
+  </section>
+</main>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // 极简 Markdown → HTML（先转义再转换，杜绝报告内容注入）
+  function mdToHtml(md) {
+    const lines = esc(md).split(/\r?\n/);
+    let html = '';
+    let inList = false;
+    const closeList = () => { if (inList) { html += '</ul>'; inList = false; } };
+    for (const raw of lines) {
+      const line = raw.trimEnd();
+      const h = /^(#{1,6})\s+(.*)$/.exec(line);
+      if (h) { closeList(); const n = h[1].length; html += `<h${n}>${h[2]}</h${n}>`; continue; }
+      if (/^\s*[-*]\s+/.test(line)) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += `<li>${line.replace(/^\s*[-*]\s+/, '')}</li>`;
+        continue;
+      }
+      if (!line.trim()) { closeList(); continue; }
+      closeList();
+      html += `<p>${line}</p>`;
+    }
+    closeList();
+    return html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>');
+  }
+
+  const setStatus = (el, msg, isErr = false) => {
+    el.textContent = msg ?? '';
+    el.classList.toggle('err', Boolean(isErr));
+  };
+
+  // 请求失败时的可操作诊断：区分「连不上服务」/「超时」/「服务端业务错误」
+  function describeFetchError(err, path, timeoutMs) {
+    if (err && err.name === 'AbortError') {
+      return `请求 ${path} 超时（${Math.round(timeoutMs / 1000)} 秒无响应）。\n服务可能仍在处理，请查看服务窗口的日志。`;
+    }
+    if (err instanceof TypeError) {
+      return [
+        `无法连接本地服务：${path}`,
+        '可能原因：① 服务未启动或已关闭；② 你直接双击打开了本页面（file:// 协议）。',
+        '解决：到项目根目录双击 start.cmd，然后访问 http://127.0.0.1:8787',
+      ].join('\n');
+    }
+    return err?.message ?? String(err);
+  }
+
+  async function api(path, options = {}) {
+    const { timeoutMs, ...init } = options;
+    const ctrl = timeoutMs ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), timeoutMs) : null;
+
+    let res;
+    try {
+      res = await fetch(path, ctrl ? { ...init, signal: ctrl.signal } : init);
+    } catch (err) {
+      console.error(`[api] 连接失败 ${path}`, err);
+      throw new Error(describeFetchError(err, path, timeoutMs));
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+
+    const type = res.headers.get('content-type') ?? '';
+    const data = type.includes('application/json') ? await res.json().catch(() => null) : await res.text();
+    if (!res.ok) {
+      const lines = [`HTTP ${res.status}（${path}）`];
+      if (data && data.error) lines.push(data.error);
+      if (data && data.detail && data.detail !== data.error) lines.push(`详情：${data.detail}`);
+      if (data && data.stack) console.error(`[api] 服务端堆栈 ${path}\n${data.stack}`);
+      console.error(`[api] 请求失败 ${path}`, res.status, data);
+      throw new Error(lines.join('\n'));
+    }
+    return data;
+  }
+
+  // 万象棋推荐分析角度：只围绕已采集的数据维度
+  // （英雄榜 / 棋手榜 / 装备榜；登顶率 / 前三率 / 平均名次 / 平均等级；与上一份快照的 diff）。
+  // 刻意不含「阵容」类问题——M1 未采集阵容数据，问了只会得到空洞答案。
+  const ANGLE_POOL = [
+    '本版登顶率最高的英雄强在哪？我该照着榜单练吗？',
+    '前三率高但登顶率一般的英雄，适合什么样的对局？',
+    '平均名次最好的英雄和登顶率最高的英雄，为什么不是同一批？',
+    '装备榜前列里，哪些是主 C 的核心装，哪些只是拼图？',
+    '棋手榜前几名有什么可迁移的打法共性？',
+    '平均等级最高的英雄，是不是暗示了特定的运营节奏？',
+    '样本量很小的英雄登顶率却很高，这是绝活还是噪声？',
+    '和上一份快照比，这版哪些英雄涨了、哪些掉了，说明了什么？',
+    '装备榜里登顶率提升最明显的装备，值得无脑优先拿吗？',
+    '当期环境偏快攻还是偏运营？从榜单的哪些指标能看出来？',
+    '登顶率和前三率给出相反信号时，选英雄该听哪一个？',
+    '同阵营或同阶位的英雄之间，强度差距说明了什么？',
+    '我卡在中段段位上不去，看榜单该先改英雄选择还是先改打法？',
+    '版本更新后，英雄榜要观察多久的数据才值得当真？',
+  ];
+
+  let angleDeck = [];
+
+  // 洗牌牌堆：抽完一整轮才重置，保证「换一批」不会立刻重复
+  function drawAngles(n = 3) {
+    if (angleDeck.length < n) angleDeck = ANGLE_POOL.slice().sort(() => Math.random() - 0.5);
+    return angleDeck.splice(0, n);
+  }
+
+  function renderAngles() {
+    const box = $('angleChips');
+    box.innerHTML = '';
+    for (const q of drawAngles()) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.textContent = q;
+      btn.addEventListener('click', () => {
+        $('angleInput').value = q; // 点击即填入，可再手动修改
+        $('angleInput').focus();
+      });
+      box.appendChild(btn);
+    }
+  }
+
+  let state = { keyConfigured: false, modes: [], defaultMode: '2', snapshots: [], reports: [] };
+
+  // ---- 报告模式选择 ----
+  function fillSelect(sel, options) {
+    sel.innerHTML = options.map((o) => `<option value="${esc(o.value)}">${esc(o.label)}</option>`).join('');
+  }
+
+  // 当前选择 → 报告请求参数 {mode}
+  function currentMode() {
+    return { mode: $('reportModeSelect').value };
+  }
+
+  // 重建下拉：保留用户当前选择，避免刷新后跳回默认
+  function renderReportModeSelect() {
+    const prev = $('reportModeSelect').value || state.defaultMode;
+    fillSelect($('reportModeSelect'), state.modes);
+    if (state.modes.some((m) => m.value === prev)) $('reportModeSelect').value = prev;
+  }
+
+  function renderBadges() {
+    const key = state.keyConfigured
+      ? '<span class="badge on">API Key 已配置</span>'
+      : '<span class="badge off">API Key 未配置</span>';
+    const n = state.snapshots.length;
+    const latest = n ? state.snapshots[n - 1] : null;
+    const snap = `<span class="badge${n ? ' on' : ''}">快照 ${n} 份${latest ? ` · 最新 ${esc(latest.date)} ${esc(latest.label)}` : ''}</span>`;
+    $('badges').innerHTML = key + snap;
+    setStatus($('keyStatus'), state.keyConfigured ? '已配置（明文不展示）' : '尚未配置，生成报告前请先保存 key。');
+  }
+
+  function renderReportList() {
+    const list = $('reportList');
+    if (!state.reports.length) {
+      list.innerHTML = '';
+      setStatus($('listStatus'), '暂无报告。');
+      return;
+    }
+    setStatus($('listStatus'), '');
+    list.innerHTML = state.reports.map((n) => `<li><button data-name="${esc(n)}">${esc(n)}</button></li>`).join('');
+  }
+
+  async function refresh() {
+    state = await api('/api/state');
+    renderReportModeSelect();
+    renderBadges();
+    renderReportList();
+  }
+
+  $('keySave').addEventListener('click', async () => {
+    const input = $('keyInput');
+    const key = input.value.trim();
+    if (!key) { setStatus($('keyStatus'), '请先填入 key。', true); return; }
+    $('keySave').disabled = true;
+    try {
+      await api('/api/secrets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key }),
+      });
+      input.value = ''; // 保存后立即清空，不在前端保留明文
+      await refresh();
+      setStatus($('keyStatus'), '已保存到 data/.secrets.json。');
+    } catch (err) {
+      setStatus($('keyStatus'), `保存失败：${err.message}`, true);
+    } finally {
+      $('keySave').disabled = false;
+    }
+  });
+
+  $('collectBtn').addEventListener('click', async () => {
+    const btn = $('collectBtn');
+    btn.disabled = true;
+    setStatus($('collectStatus'), '采集中…（两种模式串行请求，约需十秒）');
+    try {
+      const r = await api('/api/collect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ force: $('forceChk').checked }),
+        timeoutMs: 120000,
+      });
+      const WORD = { collected: '已采集落盘', skipped: '已存在，跳过', locked: '有采集在进行，让出' };
+      const lines = (r.results ?? []).map((x) => `${x.label}：${WORD[x.status] ?? x.status}`);
+      setStatus($('collectStatus'), lines.join('\n') || '采集完成。', (r.results ?? []).some((x) => x.status === 'locked'));
+      await refresh();
+    } catch (err) {
+      setStatus($('collectStatus'), `采集失败：${err.message}`, true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  $('reportBtn').addEventListener('click', async () => {
+    const btn = $('reportBtn');
+    btn.disabled = true;
+    setStatus($('reportStatus'), '生成中…（调用 DeepSeek，可能需要数十秒）');
+    try {
+      const r = await api('/api/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ angle: $('angleInput').value, ...currentMode() }),
+        timeoutMs: 300000,
+      });
+      $('reportView').hidden = false;
+      $('reportView').innerHTML = mdToHtml(r.text);
+      state.reports = r.reports;
+      renderReportList();
+      const note = r.fallback ? `（所选模式无快照，已回退到：${r.label} ${r.date}）` : '';
+      setStatus($('reportStatus'), `已生成（${r.label}）：${r.name}${note}`);
+    } catch (err) {
+      setStatus($('reportStatus'), `生成失败：${err.message}`, true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  $('reportList').addEventListener('click', async (e) => {
+    const btn = e.target.closest('button[data-name]');
+    if (!btn) return;
+    try {
+      const md = await api(`/api/report?name=${encodeURIComponent(btn.dataset.name)}`);
+      $('reportView').hidden = false;
+      $('reportView').innerHTML = mdToHtml(md);
+      setStatus($('listStatus'), `已载入：${btn.dataset.name}`);
+    } catch (err) {
+      setStatus($('listStatus'), `载入失败：${err.message}`, true);
+    }
+  });
+
+  renderAngles();
+  $('angleRefresh').addEventListener('click', renderAngles);
+
+  // file:// 直接打开时给出醒目提示（此时所有 fetch 必然失败）
+  if (location.protocol === 'file:') $('fileWarn').hidden = false;
+
+  refresh().catch((err) => {
+    $('badges').innerHTML = '<span class="badge off">服务未连接</span>';
+    setStatus($('keyStatus'), `初始化失败：${err.message}`, true);
+  });
+})();
+</script>
+</body>
+</html>

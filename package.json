@@ -1,0 +1,18 @@
+{
+  "name": "ai-coach-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "个人 AI 教练 Agent：按需采集《王者万象棋》数据并生成分析报告",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "collect": "node collector/fetch-meta.mjs",
+    "cards": "node collector/extract-cards.mjs",
+    "context": "node analyst/build-context.mjs",
+    "report": "node analyst/generate-report.mjs",
+    "serve": "node web/serve.mjs",
+    "test": "node --test collector/ analyst/ web/"
+  }
+}

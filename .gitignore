@@ -1,0 +1,7 @@
+node_modules/
+
+# 密钥绝不提交（见设计文档 §5.2）
+data/.secrets.json
+
+# 采集并发锁（瞬时文件）
+data/.collect.lock
