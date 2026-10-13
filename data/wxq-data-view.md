@@ -89,11 +89,7 @@
 
 ## 模式区分（万象大赛 vs 钻石狂潮）
 
-**响应体里没有任何模式字段**，模式完全由请求参数决定。站点代码分两个版本：
-
-- **当前构建**（`assets/seo-rNirm1H6.js`、`desktop-main-BKY-T2c8.js`）：榜单请求只带 `time` + `version`，
-  已不存在 `gameType` / `subMode` / `subModeName`；线上 `gameType=2` 仍被服务端兼容，返回正常数据。
-- **旧构建**（`assets/seo-U6FC9mlq.js`，仍留在服务器上）才有下面这段：
+**响应体里没有任何模式字段**，模式完全由请求参数决定。站点最新构建（`assets/seo-DqnkTdOA.js`）中：
 
 ```js
 const $1=[{value:"2",label:"万象大赛"},{value:"4",label:"钻石狂潮"}], Ja="2";
@@ -102,17 +98,19 @@ function ti(t,a,e,n){
   const s=new URLSearchParams({time:String(t),version:a,gameType:e});
   return e==="4"&&n&&s.set("subModeName",n), s.toString();
 }
-// /wzwxq/rankings/heroes | equipment | commanders 均走 ti()
+// /wzwxq/rankings/heroes | equipment | commanders 均走 ti()；另有 /wzwxq/explore（POST，参数同形 An()）
 ```
 
 | 参数 | 取值 | 默认 |
 |---|---|---|
-| `gameType` | `2`=万象大赛　`4`=钻石狂潮（**站点已废弃**） | **`2`** |
-| `subModeName` | 仅 `gameType=4` 有意义：`大师场`/`精英场`/`标准场`/空=不限（**站点已废弃**） | 无 |
+| `gameType` | `2`=万象大赛　`4`=钻石狂潮 | **`2`** |
+| `subModeName` | 仅 `gameType=4` 有意义：`大师场`/`精英场`/`标准场`/空=不限 | 无 |
 | `time` | 天数窗口 | — |
 | `version` | 版本 | `v1` |
 
-线上实测：
-- `gameType=2` 返回结果与本文件数据逐字节一致 → **现有快照确为万象大赛**。
-- `gameType=4`（含 `subModeName=大师场`）固定返回 `code=42000`。这是服务端对**已废弃参数组合的业务拒绝**，
-  与 IP 封禁 / 限流无关（旧结论「本机 IP 被封」已被推翻）。钻石狂潮不可采集，故本工具一键采集只保留万象大赛。
+线上实测（2026-10-14，本站出口）：
+- `gameType=2`（或不带 `gameType`）→ `code=1`，`data` 为 `{rows, base}` → **现有快照确为万象大赛**。
+- `gameType=4`（`time` 试过 1/3/5/7/14/30/60/90/180/365/10000，`subModeName` 试过 大师场/精英场/标准场）
+  一律返回 `code=42000` + `message="该条件下数据样本过少，换个时间范围试试吧"` → 这是**服务端「样本过少」的业务响应**，
+  即钻石狂潮当前无可用样本；与 IP 封禁、限流、参数废弃均无关（「参数已废弃」「本机 IP 被封」两种旧结论均已推翻）。
+  本工具仍保留钻石狂潮模式，如实记录该响应，不影响万象大赛采集。

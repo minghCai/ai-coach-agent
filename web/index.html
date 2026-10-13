@@ -128,7 +128,7 @@
 
   <section class="card">
     <h2>2. 采集快照</h2>
-    <p class="hint">一键采集今日快照：万象大赛。手动触发、跑完即停；同一天已有快照会跳过；数据源业务拒绝时不写入任何文件。</p>
+    <p class="hint">一键采集今日快照：万象大赛 + 钻石狂潮（大师场）。手动触发、跑完即停；同一天已有快照会跳过；某模式无样本时如实记录、不写入该模式快照。</p>
     <div class="row">
       <button id="collectBtn">一键采集</button>
       <label class="check"><input type="checkbox" id="forceChk"> 强制重采</label>
@@ -368,7 +368,7 @@
         collected: '已采集落盘',
         skipped: '已存在，跳过',
         locked: '有采集在进行，让出',
-        rejected: '数据源业务拒绝',
+        rejected: '数据源业务响应（暂无样本）',
         error: '采集失败',
       };
       const lines = (r.results ?? []).map((x) => `${x.label}：${WORD[x.status] ?? x.status}${x.message ? `（${x.message}）` : ''}`);

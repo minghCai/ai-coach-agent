@@ -191,7 +191,7 @@ function createApi({ dataDir }) {
       return sendJson(res, 200, { ok: true, keyConfigured: true });
     }
 
-    // 一键采集：固定采集 MODES（当前仅万象大赛），不接受模式参数
+    // 一键采集：固定采集 MODES（万象大赛 + 钻石狂潮·大师场），不接受模式参数
     if (req.method === 'POST' && pathname === '/api/collect') {
       const t0 = Date.now();
       const { force = false } = await readBody(req);

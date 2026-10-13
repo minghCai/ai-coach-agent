@@ -96,11 +96,11 @@ test('slotKey / modeLabel：模式 ↔ 槽位 ↔ 可读名', () => {
   assert.equal(modeLabel('2'), '万象大赛');
   assert.equal(modeLabel('4'), '钻石狂潮·不限');
   assert.equal(modeLabel('4-标准场'), '钻石狂潮·标准场');
-  // 钻石狂潮已不在 MODES 中，标签按通用规则展开为「钻石狂潮·<场次>」
-  assert.equal(modeLabel('4-大师场'), '钻石狂潮·大师场');
+  // MODES 中钻石狂潮只认大师场，标签简化为「钻石狂潮」
+  assert.equal(modeLabel('4-大师场'), '钻石狂潮');
 });
 
-test('一键采集：按 MODES 顺序采集（当前仅万象大赛）', async () => {
+test('一键采集：按 MODES 顺序采集两种模式', async () => {
   const dir = tmpDataDir();
   const calls = makeFetchMock(() => ({ body: okBody('x') }));
 
@@ -110,10 +110,12 @@ test('一键采集：按 MODES 顺序采集（当前仅万象大赛）', async (
     results.map((r) => r.slot),
     MODES.map((m) => m.id),
   );
-  assert.deepEqual(results.map((r) => r.label), ['万象大赛']);
+  assert.deepEqual(results.map((r) => r.label), ['万象大赛', '钻石狂潮']);
   assert.ok(results.every((r) => r.status === 'collected'));
-  assert.equal(calls.length, 3, 'MODES 模式数 × 3 端点');
+  assert.equal(calls.length, 6, 'MODES 模式数 × 3 端点');
+  assert.equal(calls.filter((c) => c.url.includes('gameType=4')).length, 3);
   assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '2', 'api', 'heroes.json')));
+  assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '4-大师场', 'api', 'heroes.json')));
 });
 
 test('一键采集：模式被业务拒绝时记为失败并立即停止', async () => {

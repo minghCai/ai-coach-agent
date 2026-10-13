@@ -12,8 +12,8 @@ export const API_BASE = 'https://api.datatft.com/wzwxq';
 export const USER_AGENT = 'wxq-coach-agent/0.1 (personal research, on-demand)';
 
 // 数据源业务拒绝：HTTP 200 + body.code === 42000。
-// 语义为「服务端明确拒绝这组请求参数」（如参数组合已下线），与 IP 封禁/限流无关；
-// 原文照抄服务端 message 以便定位。
+// 语义为服务端在业务层面拒答本次请求（实测为「该条件下数据样本过少，换个时间范围试试吧」），
+// 与 IP 封禁/限流无关；原文照抄服务端 message 以便定位。
 export class BusinessRejectedError extends Error {
   constructor(name, serverMessage) {
     const detail = serverMessage ? `：${serverMessage}` : '';

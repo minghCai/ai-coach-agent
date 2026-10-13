@@ -185,8 +185,8 @@ test('模式：按 slot 出报告，文件名与摘要都带模式名', async ()
   const r = await generateReport({ angle: 'x', dataDir: root, slot: '4-大师场', llmCall: fn });
 
   assert.equal(r.slot, '4-大师场');
-  assert.equal(r.modeLabel, '钻石狂潮·大师场');
-  assert.equal(path.basename(r.reportPath), '2026-10-13-钻石狂潮·大师场-x.md');
+  assert.equal(r.modeLabel, '钻石狂潮');
+  assert.equal(path.basename(r.reportPath), '2026-10-13-钻石狂潮-x.md');
   assert.equal(path.relative(root, r.summaryPath), path.join('meta', '2026-10-13', '4-大师场', 'summary.md'));
 });
 
