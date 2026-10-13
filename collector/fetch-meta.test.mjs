@@ -86,6 +86,9 @@ test('buildEndpoints：显式带 gameType；仅钻石狂潮具体场次追加 su
       (e) => e.path.includes('gameType=4') && e.path.includes(`subModeName=${encodeURIComponent('大师场')}`),
     ),
   );
+
+  // 刻意不带 version：写死旧版本 v1 会让钻石狂潮恒返回 42000
+  assert.ok([...wz, ...zsAny, ...zsMaster].every((e) => !e.path.includes('version=')));
 });
 
 test('slotKey / modeLabel：模式 ↔ 槽位 ↔ 可读名', () => {

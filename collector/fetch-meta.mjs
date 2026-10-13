@@ -6,12 +6,12 @@
 // 落盘位置：data/meta/<YYYY-MM-DD>/<slot>/api/{heroes,commanders,equipment}.json
 //   slot = gameType（2=万象大赛 / 4=钻石狂潮）；钻石狂潮指定具体场次时追加 '-<场次>'
 //
-// 模式口径（与站点当前构建 assets/seo-DqnkTdOA.js 的 ti() 逐字一致）：
-//   请求参数 = time + version + gameType，仅 gameType=4 时附带 subModeName（大师场/精英场/标准场，空=不限）；
+// 模式口径（请求构造与站点前端一致，唯一差异是本工具刻意不带 version）：
+//   请求参数 = time + gameType，仅 gameType=4 时附带 subModeName（大师场/精英场/标准场，空=不限）。
+//   刻意不指定 version：服务端按 version 划分数据版本分区，站点前端用的是「当前版本」分区，
+//   而旧版本 v1 分区只沉淀了万象大赛样本——写死 version=v1 会让钻石狂潮一律返回 code=42000
+//   （「该条件下数据样本过少」）。不传 version 时服务端回落到最新分区，两个模式均有样本。
 //   响应体中不含任何模式字段，模式完全由请求参数决定。
-//   实测：gameType=2 正常返回；gameType=4（各种 time / subModeName 组合）返回 code=42000
-//   「该条件下数据样本过少，换个时间范围试试吧」——这是数据样本不足的业务响应（非参数废弃、非 IP 封禁）。
-//   钻石狂潮据此可能暂无数据，但本工具保留该模式并如实记录该响应，不视为失败。
 //
 // 关键约束：
 //   §3.2 防线 2  先串行取回全部端点并逐一校验，全部通过后才 mkdir + 写文件；
@@ -33,7 +33,7 @@ const NO_SUB_MODE = '不限';
 
 // 本工具固定使用的两个模式：万象大赛（不限场次）+ 钻石狂潮·大师场。
 // 一键采集按此列表顺序执行；报告模式下拉也直接取自这里。
-// 钻石狂潮当前可能返回「数据样本过少」（42000），属业务响应，如实记录、不阻断其余模式。
+// 两个模式都取数据源当前版本分区；若某模式确无样本会返回 42000 业务响应，如实记录、不阻断其余模式。
 export const MODES = [
   { id: '2', gameType: '2', subModeName: null, label: '万象大赛' },
   { id: '4-大师场', gameType: '4', subModeName: '大师场', label: '钻石狂潮' },
@@ -63,12 +63,12 @@ export function modeLabel(slot) {
 
 /**
  * 依模式构造 3 个 rankings 端点：gameType 必须显式传入；subModeName 仅在
- * gameType=4 且为具体场次时附加（与站点 ti() 完全一致）。
+ * gameType=4 且为具体场次时附加。刻意不带 version，让服务端回落到最新数据版本分区。
  */
 export function buildEndpoints(gameType, subModeName) {
   const gt = String(gameType ?? DEFAULT_MODE);
   const sub = subModeName == null ? '' : String(subModeName).trim();
-  const q = [`time=7`, `version=v1`, `gameType=${encodeURIComponent(gt)}`];
+  const q = [`time=7`, `gameType=${encodeURIComponent(gt)}`];
   if (gt === '4' && sub && sub !== NO_SUB_MODE) q.push(`subModeName=${encodeURIComponent(sub)}`);
   const query = q.join('&');
   return [

@@ -149,7 +149,7 @@ export async function buildContext({ dataDir, knowledgeDir, date, slot = DEFAULT
       `- 模式：${label}（gameType=${actualSlot.startsWith('4') ? '4' : actualSlot}）；本上下文仅含该模式数据，勿跨模式混用`,
       fallback ? `- ⚠ 兜底说明：所选模式「${modeLabel(fallback.requestedSlot)}」无任何快照，已自动改用「${label}」的『${target}』快照` : null,
       '- firstRate = 登顶率；top3Rate = 前三率；avgPlacement = 平均名次（6 人局均值 3.50）；avgLevel = 平均等级',
-      '- 时间窗：近 7 天（time=7），版本 v1；数据源 api.datatft.com/wzwxq（第三方非官方接口，无 SLA）',
+      '- 时间窗：近 7 天（time=7），跟随数据源最新版本（不指定 version）；数据源 api.datatft.com/wzwxq（第三方非官方接口，无 SLA）',
       '- 名称/阵营/阶位来自本地卡牌库（data/cards/），未命中时以 id 占位',
     ]
       .filter(Boolean)
