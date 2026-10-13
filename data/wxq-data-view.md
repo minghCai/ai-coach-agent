@@ -123,3 +123,23 @@ function ti(t,a,e,n){
 - 不传 `version` 时服务端回落到最新分区，两个模式都有样本；三个端点（heroes/commanders/equipment）均正常返回。
 - 因此采集端 `collector/fetch-meta.mjs` 的 `buildEndpoints` **刻意不带 `version`**。`time=7` 下钻石狂潮约 26.1 万场，
   `subModeName=大师场` 为它的子集（约 13.9 万场）。
+
+---
+
+## 阵容榜（lineups）
+
+端点：`POST /wzwxq/lineups/search`（用 GET 返回 405），body `{time:7, gameType:'2'|'4', page, pageSize:20}`；
+仅 gameType=4 且为具体场次时附 `subModeName`；**刻意不带 version**（与榜单同口径）。
+
+落盘：`data/meta/<YYYY-MM-DD>/<slot>/api/lineups-{1,2}.json`（每页各存一份原始响应，不合并不改写）。单页 `pageSize` 上限 20。
+
+规模（time=7，2026-10-14 实采）：万象大赛 **32 套**（sampleCount 344,959）、钻石狂潮·大师场 **22 套**（sampleCount 140,058）→ 固定取 2 页即可覆盖。
+
+**阵容 = 一组英雄的固定组合**，`lineupKey = 阵容人数|英雄id|…`（英雄 id 升序）。万象大赛榜首示例：
+
+| lineupKey | 英雄 | 常用棋手 | 场次 | 登场率 | 平均名次 | 登顶率 | 前三率 | 变体数 |
+|---|---|---|---|---|---|---|---|---|
+| 7\|1311\|1361\|1441\|1541\|1751\|1861\|5131 | 李白/武则天/程咬金/花木兰/钟馗/太乙真人/上官婉儿 | 嬴律/庄小鱼/明先生 | 18761 | 32.6% | 3.0849 | 23.0% | 60.4% | 24 |
+
+每条记录还带 `coreHeroes`（核心英雄子集）与 `recommendedUnits`（逐英雄出装推荐，`recommendationType` 取 `three_item`/`single_item`/`none`）。
+`appearanceRate` 是该阵容在阵容榜内的登场率，不等于单卡场次占比。

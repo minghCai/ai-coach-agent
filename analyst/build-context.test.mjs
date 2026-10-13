@@ -129,6 +129,46 @@ test('缺失声明：未采集阵容时显式标注数据缺失', async () => {
   assert.match(ctx.text, /lineups\/search/);
 });
 
+test('阵容：快照含 lineups-*.json 时输出阵容榜，且不再标注缺失', async () => {
+  const root = tmp();
+  seedSnapshot(root, '2026-10-13');
+  seedCards(root);
+  const apiDir = path.join(root, 'meta', '2026-10-13', '2', 'api');
+  const lineup = {
+    code: 1,
+    success: true,
+    message: '',
+    data: {
+      sampleCount: 344959,
+      total: 1,
+      lineups: [
+        {
+          lineupKey: '7|1311|1361|1441|1541|1751|1861|5131',
+          lineupSize: 7,
+          heroes: [
+            { id: '1311', name: '李白' },
+            { id: '1541', name: '花木兰' },
+          ],
+          commanders: [{ id: '43', name: '嬴律' }],
+          count: 18761,
+          appearanceRate: 0.3263,
+          avgPlacement: 3.0849,
+          firstRate: 0.2299,
+          top3Rate: 0.6041,
+        },
+      ],
+    },
+  };
+  fs.writeFileSync(path.join(apiDir, 'lineups-1.json'), JSON.stringify(lineup), 'utf8');
+
+  const ctx = await buildContext({ dataDir: root, knowledgeDir: path.join(root, 'k') });
+
+  assert.match(ctx.text, /热门阵容/);
+  assert.match(ctx.text, /李白 \/ 花木兰/);
+  assert.match(ctx.text, /嬴律/);
+  assert.doesNotMatch(ctx.text, /数据缺失：本轮快照未采集 lineups/);
+});
+
 test('§4.5 元数据：仅 1 份快照时标注「仅作方向性参考」', async () => {
   const root = tmp();
   seedSnapshot(root, '2026-10-13');

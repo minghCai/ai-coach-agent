@@ -103,6 +103,41 @@ function rankingTable(title, rows, limit, resolve) {
   return out.join('\n');
 }
 
+// 阵容排行：读取 lineups-*.json 分页原始响应并合并；缺文件/无效应视作「未采集」
+async function readLineups(apiDir) {
+  let files;
+  try {
+    files = (await readdir(apiDir)).filter((n) => /^lineups-\d+\.json$/.test(n)).sort();
+  } catch {
+    return [];
+  }
+  if (files.length === 0) return [];
+
+  const rows = [];
+  for (const f of files) {
+    const json = await readJson(path.join(apiDir, f));
+    if (json.code !== 1 || !Array.isArray(json.data?.lineups)) return [];
+    rows.push(...json.data.lineups);
+  }
+  return rows;
+}
+
+// 阵容榜（阵容 = 一组英雄的固定组合；heroes/commanders 自带名称，无需卡牌库映射）
+function lineupTable(rows, limit) {
+  const out = [`### 热门阵容（Top ${Math.min(limit, rows.length)} / 共 ${rows.length} 套）`];
+  out.push('| # | 阵容（英雄） | 常用棋手 | 场次 | 登场率 | 平均名次 | 登顶率 | 前三率 |');
+  out.push('| --- | --- | --- | --- | --- | --- | --- | --- |');
+  rows.slice(0, limit).forEach((r, i) => {
+    const heroes = (r.heroes ?? []).map((h) => h.name ?? `id=${h.id}`).join(' / ') || '-';
+    const commanders = (r.commanders ?? []).slice(0, 3).map((c) => c.name ?? `id=${c.id}`).join(' / ') || '-';
+    out.push(
+      `| ${i + 1} | ${heroes} | ${commanders} | ${r.count ?? '-'} | ${pct(r.appearanceRate)} | ` +
+        `${fix(r.avgPlacement)} | ${pct(r.firstRate)} | ${pct(r.top3Rate)} |`,
+    );
+  });
+  return out.join('\n');
+}
+
 export async function buildContext({ dataDir, knowledgeDir, date, slot = DEFAULT_MODE } = {}) {
   const root = dataDir ? path.resolve(dataDir) : path.join(ROOT, 'data');
   const metaDir = path.join(root, 'meta');
@@ -151,6 +186,7 @@ export async function buildContext({ dataDir, knowledgeDir, date, slot = DEFAULT
       '- firstRate = 登顶率；top3Rate = 前三率；avgPlacement = 平均名次（6 人局均值 3.50）；avgLevel = 平均等级',
       '- 时间窗：近 7 天（time=7），跟随数据源最新版本（不指定 version）；数据源 api.datatft.com/wzwxq（第三方非官方接口，无 SLA）',
       '- 名称/阵营/阶位来自本地卡牌库（data/cards/），未命中时以 id 占位',
+      '- 阵容 = 一组英雄的固定组合（lineupKey = 阵容人数|英雄id…）；阵容榜的 appearanceRate 是该阵容在阵容榜内的登场率，不等于单卡场次占比',
     ]
       .filter(Boolean)
       .join('\n'),
@@ -177,11 +213,15 @@ export async function buildContext({ dataDir, knowledgeDir, date, slot = DEFAULT
     }),
   );
 
+  // 阵容排行：有 lineups 快照则出榜，无则如实标注缺失（勿据此推断阵容强度）
+  const lineupRows = await readLineups(apiDir);
   sections.push(
-    [
-      '## 热门阵容',
-      '- 数据缺失：本轮快照未采集 lineups/search，阵容维度不可用（缺失声明，勿据此推断阵容强度）',
-    ].join('\n'),
+    lineupRows.length > 0
+      ? lineupTable(lineupRows, 8)
+      : [
+          '## 热门阵容',
+          '- 数据缺失：本轮快照未采集 lineups/search，阵容维度不可用（缺失声明，勿据此推断阵容强度）',
+        ].join('\n'),
   );
 
   sections.push(

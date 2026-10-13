@@ -3,7 +3,8 @@
 // 手动执行：node collector/fetch-meta.mjs [--all | --modes <2,4-大师场>] [--mode <2|4|4-大师场|4-精英场|4-标准场>] [--force]
 //   --all   一键采集 MODES 全部模式（万象大赛 + 钻石狂潮·大师场）
 //   --modes 只采集指定模式（逗号分隔，如 "2" 仅万象大赛），供 GitHub Actions 按需选择
-// 落盘位置：data/meta/<YYYY-MM-DD>/<slot>/api/{heroes,commanders,equipment}.json
+// 落盘位置：data/meta/<YYYY-MM-DD>/<slot>/api/{heroes,commanders,equipment}.json（榜单，GET）
+//           data/meta/<YYYY-MM-DD>/<slot>/api/lineups-{1,2}.json（阵容排行，POST）
 //   slot = gameType（2=万象大赛 / 4=钻石狂潮）；钻石狂潮指定具体场次时追加 '-<场次>'
 //
 // 模式口径（请求构造与站点前端一致，唯一差异是本工具刻意不带 version）：
@@ -61,21 +62,40 @@ export function modeLabel(slot) {
   return sub ? `钻石狂潮·${sub[1]}` : s;
 }
 
+// 阵容排行：站点前端走 POST /wzwxq/lineups/search（GET 返回 405），单页上限 pageSize=20。
+// time=7 下万象大赛 32 套、钻石狂潮·大师场 22 套 → 固定取 2 页即可覆盖全部阵容。
+export const LINEUP_PAGE_SIZE = 20;
+export const LINEUP_PAGES = 2;
+// 数据源对短时间高频请求会返回 42000「系统异常，请联系站长协助处理~，<IP>」——这是按 IP 的瞬时限流。
+// 故阵容分页请求之间刻意留出间隔（榜单请求沿用既有节奏，不加间隔）。
+export const LINEUP_DELAY_MS = 1500;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /**
- * 依模式构造 3 个 rankings 端点：gameType 必须显式传入；subModeName 仅在
- * gameType=4 且为具体场次时附加。刻意不带 version，让服务端回落到最新数据版本分区。
+ * 依模式构造端点列表：3 个 rankings 榜单（GET 查询串）+ 2 页阵容排行（POST body）。
+ * gameType 必须显式传入；subModeName 仅在 gameType=4 且为具体场次时附加。
+ * 刻意不带 version，让服务端回落到最新数据版本分区。
  */
 export function buildEndpoints(gameType, subModeName) {
   const gt = String(gameType ?? DEFAULT_MODE);
   const sub = subModeName == null ? '' : String(subModeName).trim();
+  const specific = gt === '4' && sub && sub !== NO_SUB_MODE;
   const q = [`time=7`, `gameType=${encodeURIComponent(gt)}`];
-  if (gt === '4' && sub && sub !== NO_SUB_MODE) q.push(`subModeName=${encodeURIComponent(sub)}`);
+  if (specific) q.push(`subModeName=${encodeURIComponent(sub)}`);
   const query = q.join('&');
-  return [
+
+  const endpoints = [
     { file: 'heroes.json', path: `/rankings/heroes?${query}` },
     { file: 'commanders.json', path: `/rankings/commanders?${query}` },
     { file: 'equipment.json', path: `/rankings/equipment?${query}` },
   ];
+
+  for (let page = 1; page <= LINEUP_PAGES; page++) {
+    const body = { time: 7, gameType: gt, page, pageSize: LINEUP_PAGE_SIZE };
+    if (specific) body.subModeName = sub;
+    endpoints.push({ file: `lineups-${page}.json`, path: '/lineups/search', method: 'POST', body, delayMs: LINEUP_DELAY_MS });
+  }
+  return endpoints;
 }
 
 export const DEFAULT_ENDPOINTS = buildEndpoints(DEFAULT_MODE, null);
@@ -174,7 +194,8 @@ export async function collectMeta({
   // 第一步：全部取回 + 校验。此处抛错则不会有任何落盘动作。
   const results = [];
   for (const ep of eps) {
-    const json = await requestJson(ep.file, ep.path);
+    if (ep.delayMs) await sleep(ep.delayMs); // 端点上声明了间隔则先等待（避免 IP 瞬时限流）
+    const json = await requestJson(ep.file, ep.path, { method: ep.method, body: ep.body });
     results.push({ file: ep.file, json });
   }
 

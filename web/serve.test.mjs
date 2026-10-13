@@ -9,6 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const { createServer } = await import('./serve.mjs');
+// 预置快照的阵容分页数必须与采集端一致
+const { LINEUP_PAGES } = await import('../collector/fetch-meta.mjs');
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'm6-'));
 const today = () => {
@@ -25,6 +27,10 @@ function seedSnapshot(root, date, slot = '2') {
   fs.writeFileSync(path.join(apiDir, 'heroes.json'), JSON.stringify(wrap([])), 'utf8');
   fs.writeFileSync(path.join(apiDir, 'commanders.json'), JSON.stringify(wrap([])), 'utf8');
   fs.writeFileSync(path.join(apiDir, 'equipment.json'), JSON.stringify(wrap([])), 'utf8');
+  const lineups = { code: 1, success: true, message: '', data: { sampleCount: 1, total: 0, lineups: [] } };
+  for (let p = 1; p <= LINEUP_PAGES; p++) {
+    fs.writeFileSync(path.join(apiDir, `lineups-${p}.json`), JSON.stringify(lineups), 'utf8');
+  }
 }
 
 async function withServer(run) {

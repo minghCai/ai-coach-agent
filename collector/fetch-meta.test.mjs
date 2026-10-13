@@ -15,7 +15,7 @@ import path from 'node:path';
 globalThis.__FETCH_MOCK__ = null;
 
 // 拦截 fetch（client.mjs 调用的是裸 fetch → globalThis.fetch）
-globalThis.fetch = async (url) => globalThis.__FETCH_MOCK__(url);
+globalThis.fetch = async (url, init) => globalThis.__FETCH_MOCK__(url, init);
 
 const {
   collectMeta,
@@ -28,6 +28,9 @@ const {
   slotKey,
   modeLabel,
   MODES,
+  LINEUP_PAGES,
+  LINEUP_PAGE_SIZE,
+  LINEUP_DELAY_MS,
 } = await import('./fetch-meta.mjs');
 const { BusinessRejectedError, ApiError } = await import('./client.mjs');
 
@@ -35,8 +38,8 @@ const okBody = (id) => ({ code: 1, success: true, message: '', data: { id } });
 
 function makeFetchMock(handler) {
   const calls = [];
-  globalThis.__FETCH_MOCK__ = async (url) => {
-    calls.push({ url: String(url), t: Date.now() });
+  globalThis.__FETCH_MOCK__ = async (url, init) => {
+    calls.push({ url: String(url), init, t: Date.now() });
     const { status = 200, body } = handler(String(url), calls.length - 1);
     return {
       ok: status >= 200 && status < 300,
@@ -73,22 +76,40 @@ test('正常路径：3 个端点全部落盘，含 code/message/data', async () 
 
 // ---------- 模式（gameType / subModeName） ----------
 
-test('buildEndpoints：显式带 gameType；仅钻石狂潮具体场次追加 subModeName', () => {
+test('buildEndpoints：榜单走 GET 查询串、阵容走 POST body；仅钻石狂潮具体场次追加 subModeName', () => {
+  const lists = (eps) => eps.filter((e) => !e.method);
+  const lineups = (eps) => eps.filter((e) => e.method === 'POST');
+  const pages = Array.from({ length: LINEUP_PAGES }, (_, i) => i + 1);
+
   const wz = buildEndpoints('2');
-  assert.ok(wz.every((e) => e.path.includes('gameType=2') && !e.path.includes('subModeName')));
-
-  const zsAny = buildEndpoints('4', '不限');
-  assert.ok(zsAny.every((e) => e.path.includes('gameType=4') && !e.path.includes('subModeName')));
-
-  const zsMaster = buildEndpoints('4', '大师场');
+  assert.ok(lists(wz).every((e) => e.path.includes('gameType=2') && !e.path.includes('subModeName')));
   assert.ok(
-    zsMaster.every(
-      (e) => e.path.includes('gameType=4') && e.path.includes(`subModeName=${encodeURIComponent('大师场')}`),
+    lineups(wz).every(
+      (e) => e.path === '/lineups/search' && e.body.gameType === '2' && !('subModeName' in e.body),
     ),
   );
 
+  const zsAny = buildEndpoints('4', '不限');
+  assert.ok(lists(zsAny).every((e) => e.path.includes('gameType=4') && !e.path.includes('subModeName')));
+  assert.ok(lineups(zsAny).every((e) => e.body.gameType === '4' && !('subModeName' in e.body)));
+
+  const zsMaster = buildEndpoints('4', '大师场');
+  assert.ok(
+    lists(zsMaster).every(
+      (e) => e.path.includes('gameType=4') && e.path.includes(`subModeName=${encodeURIComponent('大师场')}`),
+    ),
+  );
+  assert.ok(lineups(zsMaster).every((e) => e.body.subModeName === '大师场'));
+
+  // 阵容分页：page 从 1 递增到 LINEUP_PAGES，单页上限 LINEUP_PAGE_SIZE，且分页之间留间隔（防 IP 瞬时限流）
+  assert.deepEqual(lineups(wz).map((e) => e.body.page), pages);
+  assert.ok(lineups(wz).every((e) => e.body.pageSize === LINEUP_PAGE_SIZE && e.body.time === 7));
+  assert.ok(lineups(wz).every((e) => e.delayMs === LINEUP_DELAY_MS));
+
   // 刻意不带 version：写死旧版本 v1 会让钻石狂潮恒返回 42000
-  assert.ok([...wz, ...zsAny, ...zsMaster].every((e) => !e.path.includes('version=')));
+  assert.ok(
+    [...wz, ...zsAny, ...zsMaster].every((e) => !e.path.includes('version=') && e.body?.version === undefined),
+  );
 });
 
 test('slotKey / modeLabel：模式 ↔ 槽位 ↔ 可读名', () => {
@@ -115,10 +136,42 @@ test('一键采集：按 MODES 顺序采集两种模式', async () => {
   );
   assert.deepEqual(results.map((r) => r.label), ['万象大赛', '钻石狂潮']);
   assert.ok(results.every((r) => r.status === 'collected'));
-  assert.equal(calls.length, 6, 'MODES 模式数 × 3 端点');
-  assert.equal(calls.filter((c) => c.url.includes('gameType=4')).length, 3);
-  assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '2', 'api', 'heroes.json')));
-  assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '4-大师场', 'api', 'heroes.json')));
+  const perMode = 3 + LINEUP_PAGES; // 3 榜单 + 阵容分页
+  assert.equal(calls.length, MODES.length * perMode, 'MODES 模式数 × 每模式端点数');
+
+  const isG4 = (c) => c.url.includes('gameType=4') || (c.init?.body && JSON.parse(c.init.body).gameType === '4');
+  assert.equal(calls.filter(isG4).length, perMode, '钻石狂潮模式的全部请求');
+  assert.equal(calls.filter((c) => c.url.includes('/lineups/search')).length, MODES.length * LINEUP_PAGES);
+
+  for (const slot of ['2', '4-大师场']) {
+    const apiDir = path.join(dir, 'meta', '2026-10-13', slot, 'api');
+    assert.ok(fs.existsSync(path.join(apiDir, 'heroes.json')));
+    assert.ok(fs.existsSync(path.join(apiDir, 'lineups-1.json')));
+    assert.ok(fs.existsSync(path.join(apiDir, `lineups-${LINEUP_PAGES}.json`)));
+  }
+});
+
+test('阵容排行：POST /lineups/search，按页落盘 lineups-1/2.json（body 不含 version）', async () => {
+  const dir = tmpDataDir();
+  const calls = makeFetchMock(() => ({
+    body: { code: 1, success: true, message: '', data: { sampleCount: 344959, total: 32, lineups: [] } },
+  }));
+
+  const { apiDir } = await collectMeta({ dataDir: dir, date: '2026-10-13', gameType: '2' });
+
+  const posts = calls.filter((c) => c.url.includes('/lineups/search'));
+  assert.equal(posts.length, LINEUP_PAGES);
+  assert.ok(posts.every((c) => c.init.method === 'POST' && c.init.headers['Content-Type'] === 'application/json'));
+  const bodyOf = (c) => JSON.parse(c.init.body);
+  const pages = Array.from({ length: LINEUP_PAGES }, (_, i) => i + 1);
+  assert.deepEqual(posts.map((c) => bodyOf(c).page), pages);
+  assert.ok(posts.every((c) => bodyOf(c).gameType === '2' && bodyOf(c).time === 7 && bodyOf(c).version === undefined));
+
+  for (const p of pages) {
+    const raw = JSON.parse(fs.readFileSync(path.join(apiDir, `lineups-${p}.json`), 'utf8'));
+    assert.equal(raw.code, 1);
+    assert.notEqual(raw.data, null);
+  }
 });
 
 test('一键采集：模式被业务拒绝时记为失败并立即停止', async () => {
