@@ -14,10 +14,13 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { USER_AGENT, MIN_INTERVAL_MS } from './client.mjs';
+import { USER_AGENT } from './client.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.datawxq.com';
+
+// 本工具自身的礼貌间隔（卡牌库提取低频、与按需采集解耦），不约束采集入口的手动频率
+const MIN_INTERVAL_MS = 500;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

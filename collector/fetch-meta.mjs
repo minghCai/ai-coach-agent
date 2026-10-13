@@ -1,14 +1,16 @@
 // 采集入口：手动触发，按「模式」拉取 3 个 rankings 端点并落盘原始快照。
 //
-// 手动执行：node collector/fetch-meta.mjs [--all | --modes <2,4-大师场>] [--mode <2|4|4-大师场|4-精英场|4-标准场>] [--force]
-//   --all   一键采集 MODES 全部模式（万象大赛 + 钻石狂潮·大师场）
-//   --modes 只采集指定模式（逗号分隔，如 "2" 仅万象大赛），供 GitHub Actions 按需选择
+// 手动执行：node collector/fetch-meta.mjs [--all | --modes <2>] [--mode <2|4|4-大师场|4-精英场|4-标准场>] [--force]
+//   --all   一键采集 MODES 全部模式（当前仅万象大赛）
+//   --modes 只采集指定模式（逗号分隔，如 "2"），供 GitHub Actions 按需选择
 // 落盘位置：data/meta/<YYYY-MM-DD>/<slot>/api/{heroes,commanders,equipment}.json
 //   slot = gameType（2=万象大赛 / 4=钻石狂潮）；钻石狂潮指定具体场次时追加 '-<场次>'
 //
-// 模式口径（唯一权威来源：站点 assets/seo-*.js）：
+// 模式口径：
 //   站点默认 gameType=2（万象大赛），响应体中不含任何模式字段，模式完全由请求参数决定；
-//   仅 gameType=4（钻石狂潮）时才有 subModeName（空=不限 / 大师场 / 精英场 / 标准场）。
+//   历史上仅 gameType=4（钻石狂潮）才有 subModeName（空=不限 / 大师场 / 精英场 / 标准场），
+//   但站点当前构建已移除 gameType/subModeName，gameType=4 固定得到业务拒绝 code=42000
+//   → 钻石狂潮不可采集，故 MODES 只保留万象大赛。
 //
 // 关键约束：
 //   §3.2 防线 2  先串行取回全部端点并逐一校验，全部通过后才 mkdir + 写文件；
@@ -19,7 +21,7 @@
 import { mkdir, writeFile, readFile, unlink, open } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { requestJson, ThrottledError } from './client.mjs';
+import { requestJson, BusinessRejectedError } from './client.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -28,12 +30,10 @@ export const SUB_MODES = ['不限', '大师场', '精英场', '标准场'];
 export const DEFAULT_MODE = '2';
 const NO_SUB_MODE = '不限';
 
-// 本工具固定使用的两个模式：万象大赛（不限场次）+ 钻石狂潮·大师场。
-// 一键采集按此列表顺序执行；报告模式下拉也直接取自这里。
-export const MODES = [
-  { id: '2', gameType: '2', subModeName: null, label: '万象大赛' },
-  { id: '4-大师场', gameType: '4', subModeName: '大师场', label: '钻石狂潮' },
-];
+// 本工具固定使用的模式：万象大赛（不限场次）。
+// 钻石狂潮（gameType=4）已被站点下线（固定业务拒绝 42000），不再纳入一键采集；
+// 仍可通过 CLI --mode 4-大师场 手动指定，届时会得到明确的业务拒绝提示。
+export const MODES = [{ id: '2', gameType: '2', subModeName: null, label: '万象大赛' }];
 
 /**
  * 模式归一：gameType + subModeName → 落盘槽位名。
@@ -213,9 +213,9 @@ export async function runCollect({
 }
 
 /**
- * 一键采集：按顺序跑完 MODES 里的每个模式；任一模式熔断/异常/让出锁即停止，
- * 不继续触碰数据源（42000 只允许一次，禁止连环重试）。
- * @returns {Promise<{results: Array<{slot: string, label: string, status: string}>, error?: Error}>}
+ * 一键采集：按顺序跑完 MODES 里的每个模式；任一模式被业务拒绝/异常/让出锁即停止，
+ * 不继续触碰数据源、不自动重试（是否重试完全由用户手动决定，不做频率限制）。
+ * @returns {Promise<{results: Array<{slot: string, label: string, status: string, message?: string}>, error?: Error}>}
  */
 export async function runCollectAll({ dataDir, date = today(), modes = MODES, force = false } = {}) {
   const results = [];
@@ -226,7 +226,14 @@ export async function runCollectAll({ dataDir, date = today(), modes = MODES, fo
       results.push({ slot, label: modeLabel(slot), status: r.status });
       if (r.status === 'locked') break; // 已有采集进程在跑，让出
     } catch (err) {
-      return { results, error: err }; // 熔断/异常：立即中止后续模式
+      // 业务拒绝（如 gameType=4 已下线）/ 数据异常：记为该模式的失败并立即停止，不再触碰后续模式
+      results.push({
+        slot,
+        label: modeLabel(slot),
+        status: err instanceof BusinessRejectedError ? 'rejected' : 'error',
+        message: err.message,
+      });
+      return { results, error: err };
     }
   }
   return { results };
@@ -248,9 +255,9 @@ function parseModeArg(argv) {
 }
 
 function reportFatal(err) {
-  if (err instanceof ThrottledError) {
+  if (err instanceof BusinessRejectedError) {
     console.error(`[fatal] ${err.message}`);
-    console.error('已熔断：本轮未写入任何文件。请数小时后再手动重试，切勿反复试探。');
+    console.error('数据源业务拒绝本次采集：本轮未写入任何文件。');
   } else {
     console.error(`[fatal] ${err.message}`);
     console.error('已中止：本轮未写入任何文件（校验通过前不创建目录）。');
@@ -273,10 +280,10 @@ async function main() {
   const date = today();
   const modesArg = parseModesArg(process.argv);
 
-  // 一键采集：--all 跑全部 MODES；--modes 跑指定子集。任一熔断即止，不连环重试。
+  // 一键采集：--all 跑全部 MODES；--modes 跑指定子集。任一被业务拒绝/异常/让出锁即止，不连环重试。
   if (process.argv.includes('--all') || modesArg !== undefined) {
     if (modesArg === null) {
-      console.error('[fatal] --modes 非法（应形如 "2" 或 "2,4-大师场"；可选：2 / 4 / 4-大师场 / 4-精英场 / 4-标准场）');
+      console.error('[fatal] --modes 非法（应形如 "2"；可选：2 / 4 / 4-大师场 / 4-精英场 / 4-标准场）');
       process.exitCode = 1;
       return;
     }
@@ -285,8 +292,11 @@ async function main() {
       const what =
         r.status === 'skipped' ? '快照已存在，跳过重复采集' :
         r.status === 'locked' ? '已有采集进程在运行，本轮让出' :
+        r.status === 'rejected' ? '数据源业务拒绝' :
+        r.status === 'error' ? '采集失败' :
         '快照已落盘';
-      console.log(`[ok] ${date} 「${r.label}」${what}（slot=${r.slot}）`);
+      const tag = r.status === 'collected' || r.status === 'skipped' ? '[ok]' : '[fail]';
+      console.log(`${tag} ${date} 「${r.label}」${what}（slot=${r.slot}）${r.message ? `：${r.message}` : ''}`);
     }
     if (error) reportFatal(error);
     return;

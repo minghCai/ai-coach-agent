@@ -29,7 +29,8 @@ function seedSnapshot(root, date, slot = '2') {
 
 async function withServer(run) {
   const root = tmp();
-  // 预置今日两种模式的快照 → 一键采集两个模式都走幂等分支，测试不发任何网络请求
+  // 预置今日快照 → 一键采集走幂等分支，测试不发任何网络请求
+  // （另预置一个非默认槽位快照，用于验证快照列举跨槽位、与采集模式互相独立）
   seedSnapshot(root, today(), '2');
   seedSnapshot(root, today(), '4-大师场');
   fs.mkdirSync(path.join(root, 'reports'), { recursive: true });
@@ -79,10 +80,7 @@ test('GET /api/state：返回状态，且不含密钥明文', async () => {
     assert.deepEqual(data.reports, ['2026-10-13-测试.md']);
     assert.ok(data.snapshots.some((s) => s.date === today() && s.slot === '2'));
     assert.ok(data.snapshots.some((s) => s.date === today() && s.slot === '4-大师场'));
-    assert.deepEqual(data.modes, [
-      { value: '2', label: '万象大赛' },
-      { value: '4-大师场', label: '钻石狂潮' },
-    ]);
+    assert.deepEqual(data.modes, [{ value: '2', label: '万象大赛' }]);
     assert.equal(data.defaultMode, '2');
   });
 });
@@ -120,7 +118,7 @@ test('POST /api/secrets：非法 key 被拒', async () => {
   });
 });
 
-test('POST /api/collect：一键采集，两模式均命中幂等 → 0 网络请求', async () => {
+test('POST /api/collect：一键采集命中幂等 → 0 网络请求，且返回结构化结果', async () => {
   await withServer(async ({ base }) => {
     const res = await fetch(`${base}/api/collect`, {
       method: 'POST',
@@ -129,13 +127,14 @@ test('POST /api/collect：一键采集，两模式均命中幂等 → 0 网络�
     });
     const data = await res.json();
     assert.equal(res.status, 200);
+    assert.equal(data.error, null);
     assert.deepEqual(
       data.results.map((r) => `${r.slot}:${r.status}`),
-      ['2:skipped', '4-大师场:skipped'],
+      ['2:skipped'],
     );
     assert.deepEqual(
       data.results.map((r) => r.label),
-      ['万象大赛', '钻石狂潮'],
+      ['万象大赛'],
     );
     assert.ok(data.snapshots.some((s) => s.slot === '4-大师场'));
   });

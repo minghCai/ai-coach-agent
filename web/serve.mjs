@@ -14,7 +14,6 @@ import { fileURLToPath } from 'node:url';
 import { runCollectAll, MODES, DEFAULT_MODE, modeLabel } from '../collector/fetch-meta.mjs';
 import { generateReport } from '../analyst/generate-report.mjs';
 import { loadApiKey } from '../analyst/llm.mjs';
-import { ThrottledError } from '../collector/client.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const WEB_DIR = path.join(ROOT, 'web');
@@ -192,25 +191,21 @@ function createApi({ dataDir }) {
       return sendJson(res, 200, { ok: true, keyConfigured: true });
     }
 
-    // 一键采集：固定采集万象大赛 + 钻石狂潮·大师场（不接受模式参数）
+    // 一键采集：固定采集 MODES（当前仅万象大赛），不接受模式参数
     if (req.method === 'POST' && pathname === '/api/collect') {
       const t0 = Date.now();
       const { force = false } = await readBody(req);
       const { results, error } = await runCollectAll({ dataDir, force: Boolean(force) });
       console.log(`[collect] ${results.map((r) => `${r.slot}:${r.status}`).join(' ')} 用时=${Date.now() - t0}ms`);
 
-      if (error) {
-        const throttled = error instanceof ThrottledError;
-        return sendJson(res, throttled ? 503 : 500, {
-          error: throttled
-            ? '数据源已触发限流，本轮已熔断（未写入任何文件）。请数小时后再手动重试，切勿反复试探。'
-            : String(error?.message ?? error),
-          detail: String(error),
-          results,
-          snapshots: await listSnapshots(),
-        });
-      }
-      return sendJson(res, 200, { results, snapshots: await listSnapshots() });
+      // 采集结果属「业务结果」，一律 200 + 结构化 per-mode 结果：
+      // 业务拒绝只如实记录在该模式条目上，不做 503 冷却、不劝退手动重试。
+      return sendJson(res, 200, {
+        results,
+        error: error ? String(error.message ?? error) : null,
+        detail: error ? String(error) : null,
+        snapshots: await listSnapshots(),
+      });
     }
 
     if (req.method === 'POST' && pathname === '/api/report') {
@@ -277,11 +272,8 @@ export function createServer({ dataDir = DATA_DIR, webDir = WEB_DIR } = {}) {
     } catch (err) {
       // 完整堆栈打到服务端窗口（前端拿不到 console，只能靠这里留痕）
       console.error(`[error] ${req.method} ${url.pathname}`, err);
-      const throttled = err instanceof ThrottledError;
-      sendJson(res, throttled ? 503 : 500, {
-        error: throttled
-          ? '数据源已触发限流，本轮已熔断（未写入任何文件）。请数小时后再手动重试，切勿反复试探。'
-          : String(err?.message ?? err),
+      sendJson(res, 500, {
+        error: String(err?.message ?? err),
         detail: String(err),
         stack: err?.stack,
       });

@@ -1,8 +1,8 @@
 // M1 自动化验收测试（node --test collector/）
 //
 // 拦截网络（globalThis.fetch），落盘则真实写到系统临时目录，
-// 用例结束后直接断言文件系统状态 —— 以此验证两条硬约束：
-//   「42000 不落盘、不留空壳目录」与「相邻请求间隔 ≥500ms」。
+// 用例结束后直接断言文件系统状态 —— 以此验证硬约束：
+//   「业务拒绝（42000）不落盘、不留空壳目录」。
 // 测试完全离线，不会触碰真实数据源。
 
 import test from 'node:test';
@@ -29,7 +29,7 @@ const {
   modeLabel,
   MODES,
 } = await import('./fetch-meta.mjs');
-const { requestJson, ThrottledError, ApiError, MIN_INTERVAL_MS } = await import('./client.mjs');
+const { BusinessRejectedError, ApiError } = await import('./client.mjs');
 
 const okBody = (id) => ({ code: 1, success: true, message: '', data: { id } });
 
@@ -96,11 +96,11 @@ test('slotKey / modeLabel：模式 ↔ 槽位 ↔ 可读名', () => {
   assert.equal(modeLabel('2'), '万象大赛');
   assert.equal(modeLabel('4'), '钻石狂潮·不限');
   assert.equal(modeLabel('4-标准场'), '钻石狂潮·标准场');
-  // 本工具固定使用的模式：钻石狂潮只认大师场，标签简化为「钻石狂潮」
-  assert.equal(modeLabel('4-大师场'), '钻石狂潮');
+  // 钻石狂潮已不在 MODES 中，标签按通用规则展开为「钻石狂潮·<场次>」
+  assert.equal(modeLabel('4-大师场'), '钻石狂潮·大师场');
 });
 
-test('一键采集：按 MODES 顺序采集两种模式', async () => {
+test('一键采集：按 MODES 顺序采集（当前仅万象大赛）', async () => {
   const dir = tmpDataDir();
   const calls = makeFetchMock(() => ({ body: okBody('x') }));
 
@@ -110,25 +110,24 @@ test('一键采集：按 MODES 顺序采集两种模式', async () => {
     results.map((r) => r.slot),
     MODES.map((m) => m.id),
   );
-  assert.deepEqual(
-    results.map((r) => r.label),
-    ['万象大赛', '钻石狂潮'],
-  );
+  assert.deepEqual(results.map((r) => r.label), ['万象大赛']);
   assert.ok(results.every((r) => r.status === 'collected'));
-  assert.equal(calls.length, 6, '2 模式 × 3 端点');
-  assert.equal(calls.filter((c) => c.url.includes('gameType=4')).length, 3);
-  assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '4-大师场', 'api', 'heroes.json')));
+  assert.equal(calls.length, 3, 'MODES 模式数 × 3 端点');
+  assert.ok(fs.existsSync(path.join(dir, 'meta', '2026-10-13', '2', 'api', 'heroes.json')));
 });
 
-test('一键采集：首个模式熔断时立即停止，不再触碰后续模式', async () => {
+test('一键采集：模式被业务拒绝时记为失败并立即停止', async () => {
   const dir = tmpDataDir();
-  const calls = makeFetchMock(() => ({ body: { code: 42000 } }));
+  const calls = makeFetchMock(() => ({ body: { code: 42000, message: '参数错误' } }));
 
   const { results, error } = await runCollectAll({ dataDir: dir, date: '2026-10-13' });
 
-  assert.equal(calls.length, 1, '只应发起第 1 个请求后熔断');
-  assert.equal(results.length, 0);
-  assert.ok(error instanceof ThrottledError);
+  assert.equal(calls.length, 1, '只应发起第 1 个请求后停止');
+  assert.equal(results.length, 1);
+  assert.equal(results[0].status, 'rejected');
+  assert.equal(results[0].slot, '2');
+  assert.match(results[0].message, /业务拒绝 code=42000/);
+  assert.ok(error instanceof BusinessRejectedError);
   assert.equal(fs.readdirSync(dir).length, 0);
 });
 
@@ -163,26 +162,31 @@ test('模式互不覆盖：同日两种模式各占独立槽位', async () => {
   assert.equal(await hasValidSnapshot(path.join(dir, 'meta', '2026-10-13', '4', 'api'), EPS), true);
 });
 
-test('42000 熔断：不落盘、不留空壳目录', async () => {
+test('业务拒绝（42000）：不落盘、不留空壳目录，且透传服务端 message', async () => {
   const dir = tmpDataDir();
   makeFetchMock(() => ({ body: { code: 42000, success: false, message: '系统异常', data: null } }));
 
   await assert.rejects(
     () => collectMeta({ dataDir: dir, date: '2026-10-13', endpoints: EPS }),
-    (err) => err instanceof ThrottledError,
+    (err) => {
+      assert.ok(err instanceof BusinessRejectedError);
+      assert.equal(err.code, 42000);
+      assert.equal(err.serverMessage, '系统异常');
+      return true;
+    },
   );
 
   assert.equal(fs.existsSync(path.join(dir, 'meta', '2026-10-13')), false, '快照目录不应存在');
   assert.equal(fs.readdirSync(dir).length, 0, '数据根目录应为空');
 });
 
-test('熔断即止：命中 42000 后不再发起后续端点请求', async () => {
+test('业务拒绝即止：命中 42000 后不再发起后续端点请求', async () => {
   const dir = tmpDataDir();
   const calls = makeFetchMock(() => ({ body: { code: 42000 } }));
 
   await assert.rejects(() => collectMeta({ dataDir: dir, date: '2026-10-13', endpoints: EPS }));
 
-  assert.equal(calls.length, 1, '只应发起第 1 个请求后立即熔断');
+  assert.equal(calls.length, 1, '只应发起第 1 个请求后立即停止');
   assert.equal(fs.readdirSync(dir).length, 0);
 });
 
@@ -195,19 +199,6 @@ test('脏数据（code≠1）：抛错且不落盘', async () => {
     (err) => err instanceof ApiError,
   );
   assert.equal(fs.readdirSync(dir).length, 0);
-});
-
-test('限速：相邻请求间隔 ≥500ms', async () => {
-  const calls = makeFetchMock(() => ({ body: okBody('x') }));
-  await requestJson('probe1', '/rankings/heroes');
-  await requestJson('probe2', '/rankings/heroes');
-  await requestJson('probe3', '/rankings/heroes');
-
-  assert.equal(calls.length, 3);
-  const gap1 = calls[1].t - calls[0].t;
-  const gap2 = calls[2].t - calls[1].t;
-  assert.ok(gap1 >= MIN_INTERVAL_MS, `间隔 ${gap1}ms 应 ≥ ${MIN_INTERVAL_MS}ms`);
-  assert.ok(gap2 >= MIN_INTERVAL_MS, `间隔 ${gap2}ms 应 ≥ ${MIN_INTERVAL_MS}ms`);
 });
 
 // ---------- M3：幂等 + 并发锁 ----------
@@ -281,13 +272,13 @@ test('stale 锁：持锁进程已死时可被接管并正常采集', async () =>
   assert.equal(fs.existsSync(path.join(dir, '.collect.lock')), false, '锁应已释放');
 });
 
-test('失败路径（42000 熔断）也会释放锁，不阻塞下次', async () => {
+test('失败路径（业务拒绝 42000）也会释放锁，不阻塞下次', async () => {
   const dir = tmpDataDir();
   makeFetchMock(() => ({ body: { code: 42000 } }));
 
   await assert.rejects(
     () => runCollect({ dataDir: dir, date: '2026-10-13', endpoints: EPS }),
-    (err) => err instanceof ThrottledError,
+    (err) => err instanceof BusinessRejectedError,
   );
   assert.equal(fs.existsSync(path.join(dir, '.collect.lock')), false, '失败后锁必须被清理');
 });
