@@ -1,7 +1,8 @@
 // 采集入口：手动触发，按「模式」拉取 3 个 rankings 端点并落盘原始快照。
 //
-// 手动执行：node collector/fetch-meta.mjs [--all] [--mode <2|4|4-大师场|4-精英场|4-标准场>] [--force]
-//   --all：一键采集 MODES 里的全部模式（万象大赛 + 钻石狂潮·大师场），供 GitHub Actions 使用
+// 手动执行：node collector/fetch-meta.mjs [--all | --modes <2,4-大师场>] [--mode <2|4|4-大师场|4-精英场|4-标准场>] [--force]
+//   --all   一键采集 MODES 全部模式（万象大赛 + 钻石狂潮·大师场）
+//   --modes 只采集指定模式（逗号分隔，如 "2" 仅万象大赛），供 GitHub Actions 按需选择
 // 落盘位置：data/meta/<YYYY-MM-DD>/<slot>/api/{heroes,commanders,equipment}.json
 //   slot = gameType（2=万象大赛 / 4=钻石狂潮）；钻石狂潮指定具体场次时追加 '-<场次>'
 //
@@ -77,10 +78,9 @@ export const DEFAULT_ENDPOINTS = buildEndpoints(DEFAULT_MODE, null);
 
 const LOCK_NAME = '.collect.lock';
 
+// 固定按 Asia/Shanghai 计算日期：本机与 CI（runner 为 UTC）保持一致，避免跨时区把快照存错日期。
 function today() {
-  const d = new Date();
-  const p = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai' }).format(new Date());
 }
 
 const resolveRoot = (dataDir) => (dataDir ? path.resolve(dataDir) : path.join(ROOT, 'data'));
@@ -258,13 +258,29 @@ function reportFatal(err) {
   process.exitCode = 1;
 }
 
+// --modes：逗号分隔的模式 id（如 "2,4-大师场"）→ 模式对象数组；非法/为空返回 null；未提供返回 undefined
+function parseModesArg(argv) {
+  const i = argv.indexOf('--modes');
+  if (i < 0) return undefined;
+  const ids = (argv[i + 1] ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (ids.length === 0) return null;
+  const modes = ids.map((id) => modeFromId(id));
+  return modes.some((m) => !m) ? null : modes;
+}
+
 async function main() {
   const force = process.argv.includes('--force');
   const date = today();
+  const modesArg = parseModesArg(process.argv);
 
-  // 一键采集：按 MODES 顺序跑完所有模式，任一熔断即止
-  if (process.argv.includes('--all')) {
-    const { results, error } = await runCollectAll({ date, force });
+  // 一键采集：--all 跑全部 MODES；--modes 跑指定子集。任一熔断即止，不连环重试。
+  if (process.argv.includes('--all') || modesArg !== undefined) {
+    if (modesArg === null) {
+      console.error('[fatal] --modes 非法（应形如 "2" 或 "2,4-大师场"；可选：2 / 4 / 4-大师场 / 4-精英场 / 4-标准场）');
+      process.exitCode = 1;
+      return;
+    }
+    const { results, error } = await runCollectAll({ date, force, modes: modesArg ?? MODES });
     for (const r of results) {
       const what =
         r.status === 'skipped' ? '快照已存在，跳过重复采集' :

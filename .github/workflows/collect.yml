@@ -1,12 +1,18 @@
-# 采集工作流：在 GitHub 的公网出口采集快照（本机 IP 已被数据源限流封禁）。
+# 采集工作流：在 GitHub 的公网出口采集快照。
 #
 # 只手动触发（Actions 页面点「Run workflow」），刻意不设任何 cron/定时任务，
 # 靠低请求量（每日 0-3 次）天然规避限流；熔断（code=42000）时立即失败、零写入、不重试。
+# 注意：钻石狂潮（gameType=4）目前从本机与 GitHub 出口均返回 42000，疑似该端点全局限流，
+# 故默认只采「万象大赛」；需要连同钻石狂潮时把 modes 改为 2,4-大师场（留空=全部）。
 name: 采集快照
 
 on:
   workflow_dispatch:
     inputs:
+      modes:
+        description: '采集模式，逗号分隔：2=万象大赛，4-大师场=钻石狂潮。留空=全部'
+        type: string
+        default: '2'
       force:
         description: 强制重采（忽略当日已存在的快照）
         type: boolean
@@ -31,10 +37,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 采集（万象大赛 + 钻石狂潮·大师场）
+      - name: 采集
         run: |
+          modes="${{ inputs.modes }}"
           args="--all"
+          if [ -n "$modes" ]; then args="--modes $modes"; fi
           if [ "${{ inputs.force }}" = "true" ]; then args="$args --force"; fi
+          echo "执行：node collector/fetch-meta.mjs $args"
           node collector/fetch-meta.mjs $args
 
       # 用 always()：即使后一个模式被熔断（退出码非 0），前一个模式已成功落盘的快照也要提交
@@ -47,6 +56,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "无新增/变更快照，跳过提交"
           else
-            git commit -m "chore(snapshot): 采集 $(date -u +%F) 快照"
+            git commit -m "chore(snapshot): 采集 $(TZ='Asia/Shanghai' date +%F) 快照"
             git push
           fi
