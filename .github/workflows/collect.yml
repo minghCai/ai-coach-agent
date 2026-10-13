@@ -1,11 +1,16 @@
 # 采集工作流：在 GitHub 的公网出口采集快照。
 #
-# 只手动触发（Actions 页面点「Run workflow」），刻意不设任何 cron/定时任务。
-# 采集结果属业务结果：某模式返回数据源业务响应（如钻石狂潮 code=42000「数据样本过少」）时如实记录、
+# 两种触发方式：
+#   1) 定时：每日 00:00 UTC（= 08:00 Asia/Shanghai）自动采集全部模式；GitHub cron 一律用 UTC，改时间需换算。
+#   2) 手动：Actions 页面点「Run workflow」，可指定 modes / force。
+# 采集结果属业务结果：某模式返回数据源业务响应（如 code=42000「数据样本过少」/「系统异常+IP」）时如实记录、
 # 该模式零写入且不影响其余模式，不自动重试（是否重试由用户决定，不做频率限制）。
 name: 采集快照
 
 on:
+  schedule:
+    # 00:00 UTC = 08:00 北京。定时触发时 inputs.modes 为空 → 脚本回落 --all（MODES 全部模式）
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       modes:
