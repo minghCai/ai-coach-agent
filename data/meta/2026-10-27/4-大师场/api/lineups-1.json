@@ -1,0 +1,3704 @@
+{
+  "code": 1,
+  "message": "",
+  "data": {
+    "sampleCount": 47592,
+    "groupingMode": "rosterSimilarity",
+    "statisticsScope": "allPlayers",
+    "total": 23,
+    "pageSize": 20,
+    "page": 1,
+    "lineups": [
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 621.5831,
+            "recommendationCount": 25,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4209,
+            "itemIds": [
+              "643402",
+              "643501",
+              "643803"
+            ],
+            "count": 3483,
+            "heroId": "1131",
+            "awakenedRate": 0.9291,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 704.3991,
+            "recommendationCount": 54,
+            "appearanceRate": 0.9684,
+            "threeItemRate": 0.6137,
+            "itemIds": [
+              "643103",
+              "643705",
+              "643803"
+            ],
+            "count": 3373,
+            "heroId": "5241",
+            "awakenedRate": 0.954,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 795.1561,
+            "recommendationCount": 29,
+            "appearanceRate": 0.5998,
+            "threeItemRate": 0.7233,
+            "itemIds": [
+              "643202",
+              "643402",
+              "643803"
+            ],
+            "count": 2089,
+            "heroId": "1101",
+            "awakenedRate": 0.9804,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 518.1094,
+            "recommendationCount": 100,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1002,
+            "itemIds": [
+              "643202"
+            ],
+            "count": 3483,
+            "heroId": "5231",
+            "awakenedRate": 0.9868,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 488.5197,
+            "recommendationCount": 96,
+            "appearanceRate": 0.8961,
+            "threeItemRate": 0.0855,
+            "itemIds": [
+              "643501"
+            ],
+            "count": 3121,
+            "heroId": "5251",
+            "awakenedRate": 0.9218,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 540.8197,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3652,
+            "itemIds": [],
+            "count": 3483,
+            "heroId": "1121",
+            "awakenedRate": 0.9472,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 478.3028,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7672,
+            "threeItemRate": 0.0805,
+            "itemIds": [],
+            "count": 2672,
+            "heroId": "1211",
+            "awakenedRate": 0.9626,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 520.3873,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7606,
+            "threeItemRate": 0.0751,
+            "itemIds": [],
+            "count": 2649,
+            "heroId": "1201",
+            "awakenedRate": 0.9079,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.4391,
+        "avgPlacement": 2.5883,
+        "commanders": [
+          {
+            "appearanceRate": 0.1947,
+            "name": "嬴律",
+            "count": 678,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1272,
+            "name": "常小娥",
+            "count": 443,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0979,
+            "name": "白歌",
+            "count": 341,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5241"
+          },
+          {
+            "id": "1131"
+          },
+          {
+            "id": "1121"
+          },
+          {
+            "id": "1201"
+          },
+          {
+            "id": "5231"
+          },
+          {
+            "id": "5251"
+          },
+          {
+            "id": "1211"
+          }
+        ],
+        "count": 3483,
+        "lineupCode": "",
+        "rosterKey": "8|1101|1121|1131|1201|1211|5231|5241|5251",
+        "lineupSize": 8,
+        "top3Rate": 0.7367,
+        "variantCount": 51,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "嬴政",
+            "id": "1101"
+          },
+          {
+            "name": "鲁班七号",
+            "id": "1121"
+          },
+          {
+            "name": "庄周",
+            "id": "1131"
+          },
+          {
+            "name": "白起",
+            "id": "1201"
+          },
+          {
+            "name": "芈月",
+            "id": "1211"
+          },
+          {
+            "name": "西施",
+            "id": "5231"
+          },
+          {
+            "name": "蒙犽",
+            "id": "5241"
+          },
+          {
+            "name": "鲁班大师",
+            "id": "5251"
+          }
+        ],
+        "lineupKey": "8|1101|1121|1131|1201|1211|5231|5241|5251",
+        "rosterCount": 632,
+        "firstRate": 0.2917
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 797.3838,
+            "recommendationCount": 46,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5249,
+            "itemIds": [
+              "643705",
+              "643803",
+              "810251"
+            ],
+            "count": 2530,
+            "heroId": "1461",
+            "awakenedRate": 0.9458,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 706.4047,
+            "recommendationCount": 56,
+            "appearanceRate": 0.9542,
+            "threeItemRate": 0.43,
+            "itemIds": [
+              "643402",
+              "643705",
+              "643802"
+            ],
+            "count": 2414,
+            "heroId": "5631",
+            "awakenedRate": 0.8795,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 795.9066,
+            "recommendationCount": 15,
+            "appearanceRate": 0.453,
+            "threeItemRate": 0.589,
+            "itemIds": [
+              "641015",
+              "643302",
+              "643803"
+            ],
+            "count": 1146,
+            "heroId": "3551",
+            "awakenedRate": 0.9197,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 690.3587,
+            "recommendationCount": 184,
+            "appearanceRate": 0.9597,
+            "threeItemRate": 0.1067,
+            "itemIds": [
+              "643603"
+            ],
+            "count": 2428,
+            "heroId": "1591",
+            "awakenedRate": 0.96,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 678.3686,
+            "recommendationCount": 146,
+            "appearanceRate": 0.9597,
+            "threeItemRate": 0.0544,
+            "itemIds": [
+              "643301"
+            ],
+            "count": 2428,
+            "heroId": "5141",
+            "awakenedRate": 0.9469,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 772.5095,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3648,
+            "itemIds": [],
+            "count": 2530,
+            "heroId": "1421",
+            "awakenedRate": 0.9557,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 702.1044,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9953,
+            "threeItemRate": 0.2542,
+            "itemIds": [],
+            "count": 2518,
+            "heroId": "1831",
+            "awakenedRate": 0.8646,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 668.0596,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7964,
+            "threeItemRate": 0.0521,
+            "itemIds": [],
+            "count": 2015,
+            "heroId": "5041",
+            "awakenedRate": 0.9236,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.319,
+        "avgPlacement": 2.6933,
+        "commanders": [
+          {
+            "appearanceRate": 0.2016,
+            "name": "嬴律",
+            "count": 510,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1542,
+            "name": "常小娥",
+            "count": 390,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0862,
+            "name": "白歌",
+            "count": 218,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1461"
+          },
+          {
+            "id": "1421"
+          },
+          {
+            "id": "5631"
+          },
+          {
+            "id": "1831"
+          },
+          {
+            "id": "1591"
+          },
+          {
+            "id": "5141"
+          },
+          {
+            "id": "5041"
+          }
+        ],
+        "count": 2530,
+        "lineupCode": "",
+        "rosterKey": "8|1421|1461|1591|1831|3551|5041|5141|5631",
+        "lineupSize": 8,
+        "top3Rate": 0.7024,
+        "variantCount": 45,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "安琪拉",
+            "id": "1421"
+          },
+          {
+            "name": "露娜",
+            "id": "1461"
+          },
+          {
+            "name": "朵莉亚",
+            "id": "1591"
+          },
+          {
+            "name": "雅典娜",
+            "id": "1831"
+          },
+          {
+            "name": "艾琳",
+            "id": "3551"
+          },
+          {
+            "name": "米莱狄",
+            "id": "5041"
+          },
+          {
+            "name": "亚连",
+            "id": "5141"
+          },
+          {
+            "name": "海诺",
+            "id": "5631"
+          }
+        ],
+        "lineupKey": "8|1421|1461|1591|1831|3551|5041|5141|5631",
+        "rosterCount": 582,
+        "firstRate": 0.2711
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 695.6837,
+            "recommendationCount": 74,
+            "appearanceRate": 1,
+            "threeItemRate": 0.634,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643703"
+            ],
+            "count": 2030,
+            "heroId": "1871",
+            "awakenedRate": 0.8739,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 603.23,
+            "recommendationCount": 54,
+            "appearanceRate": 0.831,
+            "threeItemRate": 0.7131,
+            "itemIds": [
+              "641015",
+              "643208",
+              "643803"
+            ],
+            "count": 1687,
+            "heroId": "5191",
+            "awakenedRate": 0.8234,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 594.3523,
+            "recommendationCount": 21,
+            "appearanceRate": 0.7089,
+            "threeItemRate": 0.4726,
+            "itemIds": [
+              "641015",
+              "643302",
+              "643803"
+            ],
+            "count": 1439,
+            "heroId": "1741",
+            "awakenedRate": 0.9249,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 518.4867,
+            "recommendationCount": 99,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0542,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 2030,
+            "heroId": "5771",
+            "awakenedRate": 0.8818,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 514.2497,
+            "recommendationCount": 642,
+            "appearanceRate": 0.9665,
+            "threeItemRate": 0.1315,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 1962,
+            "heroId": "5051",
+            "awakenedRate": 0.8756,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 515.4172,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0286,
+            "itemIds": [],
+            "count": 2030,
+            "heroId": "1891",
+            "awakenedRate": 0.835,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 530.53,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.2522,
+            "itemIds": [],
+            "count": 2030,
+            "heroId": "5171",
+            "awakenedRate": 0.8246,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 454.3361,
+            "recommendationCount": 0,
+            "appearanceRate": 0.4823,
+            "threeItemRate": 0.0674,
+            "itemIds": [],
+            "count": 979,
+            "heroId": "1561",
+            "awakenedRate": 0.7457,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.2559,
+        "avgPlacement": 3.17,
+        "commanders": [
+          {
+            "appearanceRate": 0.1887,
+            "name": "嬴律",
+            "count": 383,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.133,
+            "name": "常小娥",
+            "count": 270,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1,
+            "name": "白歌",
+            "count": 203,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1871"
+          },
+          {
+            "id": "5191"
+          },
+          {
+            "id": "1741"
+          },
+          {
+            "id": "5171"
+          },
+          {
+            "id": "5771"
+          },
+          {
+            "id": "1891"
+          },
+          {
+            "id": "5051"
+          }
+        ],
+        "count": 2030,
+        "lineupCode": "",
+        "rosterKey": "8|1561|1741|1871|1891|5051|5171|5191|5771",
+        "lineupSize": 8,
+        "top3Rate": 0.569,
+        "variantCount": 34,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "张良",
+            "id": "1561"
+          },
+          {
+            "name": "虞姬",
+            "id": "1741"
+          },
+          {
+            "name": "东皇太一",
+            "id": "1871"
+          },
+          {
+            "name": "鬼谷子",
+            "id": "1891"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "大司命",
+            "id": "5171"
+          },
+          {
+            "name": "敖隐",
+            "id": "5191"
+          },
+          {
+            "name": "少司缘",
+            "id": "5771"
+          }
+        ],
+        "lineupKey": "8|1561|1741|1871|1891|5051|5171|5191|5771",
+        "rosterCount": 336,
+        "firstRate": 0.169
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 747.512,
+            "recommendationCount": 18,
+            "appearanceRate": 0.9736,
+            "threeItemRate": 0.6843,
+            "itemIds": [
+              "643103",
+              "643604",
+              "810253"
+            ],
+            "count": 1584,
+            "heroId": "1541",
+            "awakenedRate": 0.9198,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 817.5655,
+            "recommendationCount": 73,
+            "appearanceRate": 0.8261,
+            "threeItemRate": 0.6793,
+            "itemIds": [
+              "643207",
+              "643401",
+              "643803"
+            ],
+            "count": 1344,
+            "heroId": "5371",
+            "awakenedRate": 0.8802,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 440.8194,
+            "recommendationCount": 108,
+            "appearanceRate": 0.9871,
+            "threeItemRate": 0.0311,
+            "itemIds": [
+              "643603"
+            ],
+            "count": 1606,
+            "heroId": "1751",
+            "awakenedRate": 0.9315,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 434.7343,
+            "recommendationCount": 41,
+            "appearanceRate": 0.9392,
+            "threeItemRate": 0.0576,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 1528,
+            "heroId": "1361",
+            "awakenedRate": 0.8809,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 515.9826,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9865,
+            "threeItemRate": 0.1178,
+            "itemIds": [],
+            "count": 1605,
+            "heroId": "1441",
+            "awakenedRate": 0.9327,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 430.3989,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9846,
+            "threeItemRate": 0.0243,
+            "itemIds": [],
+            "count": 1602,
+            "heroId": "5131",
+            "awakenedRate": 0.9076,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 563.8171,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9508,
+            "threeItemRate": 0.2534,
+            "itemIds": [],
+            "count": 1547,
+            "heroId": "1311",
+            "awakenedRate": 0.9295,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 389.8397,
+            "recommendationCount": 0,
+            "appearanceRate": 0.3682,
+            "threeItemRate": 0.0033,
+            "itemIds": [],
+            "count": 599,
+            "heroId": "5091",
+            "awakenedRate": 0.818,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.2051,
+        "avgPlacement": 2.5925,
+        "commanders": [
+          {
+            "appearanceRate": 0.1795,
+            "name": "嬴律",
+            "count": 292,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1377,
+            "name": "常小娥",
+            "count": 224,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.099,
+            "name": "镜",
+            "count": 161,
+            "id": "21"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5371"
+          },
+          {
+            "id": "1541"
+          },
+          {
+            "id": "1311"
+          },
+          {
+            "id": "1441"
+          },
+          {
+            "id": "1751"
+          },
+          {
+            "id": "1361"
+          },
+          {
+            "id": "5131"
+          }
+        ],
+        "count": 1627,
+        "lineupCode": "",
+        "rosterKey": "8|1311|1361|1441|1541|1751|5091|5131|5371",
+        "lineupSize": 8,
+        "top3Rate": 0.7523,
+        "variantCount": 43,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "李白",
+            "id": "1311"
+          },
+          {
+            "name": "武则天",
+            "id": "1361"
+          },
+          {
+            "name": "程咬金",
+            "id": "1441"
+          },
+          {
+            "name": "花木兰",
+            "id": "1541"
+          },
+          {
+            "name": "钟馗",
+            "id": "1751"
+          },
+          {
+            "name": "盾山",
+            "id": "5091"
+          },
+          {
+            "name": "上官婉儿",
+            "id": "5131"
+          },
+          {
+            "name": "司空震",
+            "id": "5371"
+          }
+        ],
+        "lineupKey": "8|1311|1361|1441|1541|1751|5091|5131|5371",
+        "rosterCount": 253,
+        "firstRate": 0.2557
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 662.4722,
+            "recommendationCount": 14,
+            "appearanceRate": 0.9523,
+            "threeItemRate": 0.4577,
+            "itemIds": [
+              "643103",
+              "643402",
+              "643705"
+            ],
+            "count": 1099,
+            "heroId": "5241",
+            "awakenedRate": 0.9236,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 671.1724,
+            "recommendationCount": 52,
+            "appearanceRate": 0.8544,
+            "threeItemRate": 0.4635,
+            "itemIds": [
+              "643402",
+              "643705",
+              "643803"
+            ],
+            "count": 986,
+            "heroId": "1191",
+            "awakenedRate": 0.9493,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 770.4444,
+            "recommendationCount": 5,
+            "appearanceRate": 0.4133,
+            "threeItemRate": 0.7694,
+            "itemIds": [
+              "643502",
+              "644115",
+              "810223"
+            ],
+            "count": 477,
+            "heroId": "1841",
+            "awakenedRate": 1,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 546.7626,
+            "recommendationCount": 27,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3163,
+            "itemIds": [
+              "643302"
+            ],
+            "count": 1154,
+            "heroId": "1121",
+            "awakenedRate": 0.9471,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 520.779,
+            "recommendationCount": 33,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0719,
+            "itemIds": [
+              "643603"
+            ],
+            "count": 1154,
+            "heroId": "5231",
+            "awakenedRate": 0.9792,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 631.5633,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4142,
+            "itemIds": [],
+            "count": 1154,
+            "heroId": "1131",
+            "awakenedRate": 0.9203,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 486.8725,
+            "recommendationCount": 0,
+            "appearanceRate": 0.8085,
+            "threeItemRate": 0.0782,
+            "itemIds": [],
+            "count": 933,
+            "heroId": "5251",
+            "awakenedRate": 0.8735,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 291.443,
+            "recommendationCount": 0,
+            "appearanceRate": 0.4792,
+            "threeItemRate": 0.0217,
+            "itemIds": [],
+            "count": 553,
+            "heroId": "1861",
+            "awakenedRate": 0.1049,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.1455,
+        "avgPlacement": 2.2322,
+        "commanders": [
+          {
+            "appearanceRate": 0.1785,
+            "name": "嬴律",
+            "count": 206,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1542,
+            "name": "常小娥",
+            "count": 178,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0962,
+            "name": "白歌",
+            "count": 111,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1191"
+          },
+          {
+            "id": "5241"
+          },
+          {
+            "id": "1131"
+          },
+          {
+            "id": "1121"
+          },
+          {
+            "id": "5231"
+          },
+          {
+            "id": "5251"
+          }
+        ],
+        "count": 1154,
+        "lineupCode": "",
+        "rosterKey": "8|1121|1131|1191|1841|1861|5231|5241|5251",
+        "lineupSize": 8,
+        "top3Rate": 0.8024,
+        "variantCount": 43,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "鲁班七号",
+            "id": "1121"
+          },
+          {
+            "name": "庄周",
+            "id": "1131"
+          },
+          {
+            "name": "扁鹊",
+            "id": "1191"
+          },
+          {
+            "name": "蔡文姬",
+            "id": "1841"
+          },
+          {
+            "name": "太乙真人",
+            "id": "1861"
+          },
+          {
+            "name": "西施",
+            "id": "5231"
+          },
+          {
+            "name": "蒙犽",
+            "id": "5241"
+          },
+          {
+            "name": "鲁班大师",
+            "id": "5251"
+          }
+        ],
+        "lineupKey": "8|1121|1131|1191|1841|1861|5231|5241|5251",
+        "rosterCount": 74,
+        "firstRate": 0.4307
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 749.8147,
+            "recommendationCount": 15,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5764,
+            "itemIds": [
+              "643205",
+              "643304",
+              "643803"
+            ],
+            "count": 923,
+            "heroId": "1741",
+            "awakenedRate": 0.9989,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 703.3705,
+            "recommendationCount": 25,
+            "appearanceRate": 0.8949,
+            "threeItemRate": 0.7361,
+            "itemIds": [
+              "641015",
+              "643803",
+              "810250"
+            ],
+            "count": 826,
+            "heroId": "1991",
+            "awakenedRate": 0.8717,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 613.9312,
+            "recommendationCount": 21,
+            "appearanceRate": 0.8342,
+            "threeItemRate": 0.474,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643504"
+            ],
+            "count": 770,
+            "heroId": "1351",
+            "awakenedRate": 0.6584,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 694.6284,
+            "recommendationCount": 305,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0975,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 923,
+            "heroId": "5051",
+            "awakenedRate": 0.9924,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 684.9155,
+            "recommendationCount": 55,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0206,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 923,
+            "heroId": "5771",
+            "awakenedRate": 0.9014,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 689.7606,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0748,
+            "itemIds": [],
+            "count": 923,
+            "heroId": "1891",
+            "awakenedRate": 0.9166,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 591.9195,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9155,
+            "threeItemRate": 0.0722,
+            "itemIds": [],
+            "count": 845,
+            "heroId": "5061",
+            "awakenedRate": 0.9065,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 551.257,
+            "recommendationCount": 0,
+            "appearanceRate": 0.6956,
+            "threeItemRate": 0.053,
+            "itemIds": [],
+            "count": 642,
+            "heroId": "1561",
+            "awakenedRate": 0.6231,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.1164,
+        "avgPlacement": 3.0477,
+        "commanders": [
+          {
+            "appearanceRate": 0.1658,
+            "name": "嬴律",
+            "count": 153,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1517,
+            "name": "常小娥",
+            "count": 140,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0921,
+            "name": "白歌",
+            "count": 85,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1741"
+          },
+          {
+            "id": "1991"
+          },
+          {
+            "id": "5051"
+          },
+          {
+            "id": "1891"
+          },
+          {
+            "id": "5771"
+          },
+          {
+            "id": "1351"
+          },
+          {
+            "id": "5061"
+          },
+          {
+            "id": "1561"
+          }
+        ],
+        "count": 923,
+        "lineupCode": "",
+        "rosterKey": "8|1351|1561|1741|1891|1991|5051|5061|5771",
+        "lineupSize": 8,
+        "top3Rate": 0.6024,
+        "variantCount": 20,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "项羽",
+            "id": "1351"
+          },
+          {
+            "name": "张良",
+            "id": "1561"
+          },
+          {
+            "name": "虞姬",
+            "id": "1741"
+          },
+          {
+            "name": "鬼谷子",
+            "id": "1891"
+          },
+          {
+            "name": "公孙离",
+            "id": "1991"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "云中君",
+            "id": "5061"
+          },
+          {
+            "name": "少司缘",
+            "id": "5771"
+          }
+        ],
+        "lineupKey": "8|1351|1561|1741|1891|1991|5051|5061|5771",
+        "rosterCount": 358,
+        "firstRate": 0.2026
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 494.1047,
+            "recommendationCount": 17,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5838,
+            "itemIds": [
+              "643103",
+              "643705",
+              "643803"
+            ],
+            "count": 716,
+            "heroId": "1231",
+            "awakenedRate": 0.6941,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 601.5391,
+            "recommendationCount": 21,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5307,
+            "itemIds": [
+              "6363182",
+              "643502",
+              "643604"
+            ],
+            "count": 716,
+            "heroId": "1241",
+            "awakenedRate": 0.9372,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 655.7345,
+            "recommendationCount": 8,
+            "appearanceRate": 0.7207,
+            "threeItemRate": 0.5252,
+            "itemIds": [
+              "643402",
+              "643705",
+              "643802"
+            ],
+            "count": 516,
+            "heroId": "1411",
+            "awakenedRate": 0.8682,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 500.3925,
+            "recommendationCount": 17,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0601,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 716,
+            "heroId": "1061",
+            "awakenedRate": 0.9134,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 497.2249,
+            "recommendationCount": 34,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0936,
+            "itemIds": [
+              "641010"
+            ],
+            "count": 716,
+            "heroId": "1281",
+            "awakenedRate": 0.8687,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 554.2835,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1466,
+            "itemIds": [],
+            "count": 716,
+            "heroId": "1271",
+            "awakenedRate": 0.9106,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 504.811,
+            "recommendationCount": 0,
+            "appearanceRate": 0.6355,
+            "threeItemRate": 0.2374,
+            "itemIds": [],
+            "count": 455,
+            "heroId": "1841",
+            "awakenedRate": 0.7912,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 626.3,
+            "recommendationCount": 0,
+            "appearanceRate": 0.6145,
+            "threeItemRate": 0.4727,
+            "itemIds": [],
+            "count": 440,
+            "heroId": "1461",
+            "awakenedRate": 0.7318,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0903,
+        "avgPlacement": 3.3031,
+        "commanders": [
+          {
+            "appearanceRate": 0.1885,
+            "name": "嬴律",
+            "count": 135,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1327,
+            "name": "常小娥",
+            "count": 95,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1089,
+            "name": "白歌",
+            "count": 78,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1411"
+          },
+          {
+            "id": "1461"
+          },
+          {
+            "id": "1241"
+          },
+          {
+            "id": "1271"
+          },
+          {
+            "id": "1841"
+          },
+          {
+            "id": "1061"
+          },
+          {
+            "id": "1281"
+          },
+          {
+            "id": "1231"
+          }
+        ],
+        "count": 716,
+        "lineupCode": "",
+        "rosterKey": "8|1061|1231|1241|1271|1281|1411|1461|1841",
+        "lineupSize": 8,
+        "top3Rate": 0.5209,
+        "variantCount": 19,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "小乔",
+            "id": "1061"
+          },
+          {
+            "name": "吕布",
+            "id": "1231"
+          },
+          {
+            "name": "周瑜",
+            "id": "1241"
+          },
+          {
+            "name": "甄姬",
+            "id": "1271"
+          },
+          {
+            "name": "曹操",
+            "id": "1281"
+          },
+          {
+            "name": "貂蝉",
+            "id": "1411"
+          },
+          {
+            "name": "露娜",
+            "id": "1461"
+          },
+          {
+            "name": "蔡文姬",
+            "id": "1841"
+          }
+        ],
+        "lineupKey": "8|1061|1231|1241|1271|1281|1411|1461|1841",
+        "rosterCount": 70,
+        "firstRate": 0.1578
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 534.4391,
+            "recommendationCount": 14,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5957,
+            "itemIds": [
+              "643103",
+              "643705",
+              "643803"
+            ],
+            "count": 517,
+            "heroId": "1231",
+            "awakenedRate": 0.7408,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 620.53,
+            "recommendationCount": 10,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5648,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643604"
+            ],
+            "count": 517,
+            "heroId": "1241",
+            "awakenedRate": 0.9149,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 739.0523,
+            "recommendationCount": 13,
+            "appearanceRate": 0.7021,
+            "threeItemRate": 0.6556,
+            "itemIds": [
+              "643202",
+              "643705",
+              "643803"
+            ],
+            "count": 363,
+            "heroId": "1461",
+            "awakenedRate": 0.8072,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 513.7021,
+            "recommendationCount": 17,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1238,
+            "itemIds": [
+              "643208"
+            ],
+            "count": 517,
+            "heroId": "1271",
+            "awakenedRate": 0.911,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 486.8395,
+            "recommendationCount": 27,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0793,
+            "itemIds": [
+              "641010"
+            ],
+            "count": 517,
+            "heroId": "1281",
+            "awakenedRate": 0.8221,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 488.1564,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9768,
+            "threeItemRate": 0.0594,
+            "itemIds": [],
+            "count": 505,
+            "heroId": "1061",
+            "awakenedRate": 0.8614,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 623.322,
+            "recommendationCount": 0,
+            "appearanceRate": 0.5106,
+            "threeItemRate": 0.4242,
+            "itemIds": [],
+            "count": 264,
+            "heroId": "5211",
+            "awakenedRate": 0.0871,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0652,
+        "avgPlacement": 3.2166,
+        "commanders": [
+          {
+            "appearanceRate": 0.1973,
+            "name": "嬴律",
+            "count": 102,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1219,
+            "name": "常小娥",
+            "count": 63,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1006,
+            "name": "镜",
+            "count": 52,
+            "id": "21"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1461"
+          },
+          {
+            "id": "1241"
+          },
+          {
+            "id": "1231"
+          },
+          {
+            "id": "1271"
+          },
+          {
+            "id": "1061"
+          },
+          {
+            "id": "1281"
+          }
+        ],
+        "count": 517,
+        "lineupCode": "",
+        "rosterKey": "7|1061|1231|1241|1271|1281|1461|5211",
+        "lineupSize": 7,
+        "top3Rate": 0.5435,
+        "variantCount": 12,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "小乔",
+            "id": "1061"
+          },
+          {
+            "name": "吕布",
+            "id": "1231"
+          },
+          {
+            "name": "周瑜",
+            "id": "1241"
+          },
+          {
+            "name": "甄姬",
+            "id": "1271"
+          },
+          {
+            "name": "曹操",
+            "id": "1281"
+          },
+          {
+            "name": "露娜",
+            "id": "1461"
+          },
+          {
+            "name": "海月",
+            "id": "5211"
+          }
+        ],
+        "lineupKey": "7|1061|1231|1241|1271|1281|1461|5211",
+        "rosterCount": 83,
+        "firstRate": 0.2282
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 629.0722,
+            "recommendationCount": 11,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5098,
+            "itemIds": [
+              "641015",
+              "643302",
+              "643803"
+            ],
+            "count": 457,
+            "heroId": "1991",
+            "awakenedRate": 0.8687,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 879.7462,
+            "recommendationCount": 13,
+            "appearanceRate": 1,
+            "threeItemRate": 0.849,
+            "itemIds": [
+              "643103",
+              "643304",
+              "643803"
+            ],
+            "count": 457,
+            "heroId": "5021",
+            "awakenedRate": 0.9978,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 773.3457,
+            "recommendationCount": 10,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5842,
+            "itemIds": [
+              "643502",
+              "643504",
+              "643604"
+            ],
+            "count": 457,
+            "heroId": "5111",
+            "awakenedRate": 0.9672,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 555.954,
+            "recommendationCount": 27,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1204,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 457,
+            "heroId": "5011",
+            "awakenedRate": 0.954,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 399.6937,
+            "recommendationCount": 17,
+            "appearanceRate": 0.9431,
+            "threeItemRate": 0.0858,
+            "itemIds": [
+              "643205"
+            ],
+            "count": 431,
+            "heroId": "1771",
+            "awakenedRate": 0.8051,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 579.0525,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1138,
+            "itemIds": [],
+            "count": 457,
+            "heroId": "1161",
+            "awakenedRate": 0.9256,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 265.8659,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7505,
+            "threeItemRate": 0.0175,
+            "itemIds": [],
+            "count": 343,
+            "heroId": "1681",
+            "awakenedRate": 0.7668,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 273.7233,
+            "recommendationCount": 0,
+            "appearanceRate": 0.3479,
+            "threeItemRate": 0.0063,
+            "itemIds": [],
+            "count": 159,
+            "heroId": "1981",
+            "awakenedRate": 0.7296,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0576,
+        "avgPlacement": 2.8512,
+        "commanders": [
+          {
+            "appearanceRate": 0.1926,
+            "name": "嬴律",
+            "count": 88,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1335,
+            "name": "常小娥",
+            "count": 61,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0963,
+            "name": "白歌",
+            "count": 44,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5021"
+          },
+          {
+            "id": "5111"
+          },
+          {
+            "id": "1991"
+          },
+          {
+            "id": "1161"
+          },
+          {
+            "id": "5011"
+          },
+          {
+            "id": "1771"
+          },
+          {
+            "id": "1681"
+          }
+        ],
+        "count": 457,
+        "lineupCode": "",
+        "rosterKey": "8|1161|1681|1771|1981|1991|5011|5021|5111",
+        "lineupSize": 8,
+        "top3Rate": 0.6433,
+        "variantCount": 11,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "牛魔",
+            "id": "1681"
+          },
+          {
+            "name": "苍",
+            "id": "1771"
+          },
+          {
+            "name": "梦奇",
+            "id": "1981"
+          },
+          {
+            "name": "公孙离",
+            "id": "1991"
+          },
+          {
+            "name": "明世隐",
+            "id": "5011"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "猪八戒",
+            "id": "5111"
+          }
+        ],
+        "lineupKey": "8|1161|1681|1771|1981|1991|5011|5021|5111",
+        "rosterCount": 97,
+        "firstRate": 0.2801
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 254.9773,
+            "recommendationCount": 7,
+            "appearanceRate": 1,
+            "threeItemRate": 0.2351,
+            "itemIds": [
+              "643304",
+              "643803",
+              "810250"
+            ],
+            "count": 353,
+            "heroId": "5021",
+            "awakenedRate": 0.9632,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 210.3258,
+            "recommendationCount": 4,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1473,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643604"
+            ],
+            "count": 353,
+            "heroId": "5111",
+            "awakenedRate": 0.3258,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 161.1841,
+            "recommendationCount": 16,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0397,
+            "itemIds": [
+              "643703"
+            ],
+            "count": 353,
+            "heroId": "1161",
+            "awakenedRate": 0.3173,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 131.8801,
+            "recommendationCount": 8,
+            "appearanceRate": 0.9688,
+            "threeItemRate": 0.0409,
+            "itemIds": [
+              "643603"
+            ],
+            "count": 342,
+            "heroId": "5011",
+            "awakenedRate": 0.2924,
+            "recommendationType": "single_item"
+          }
+        ],
+        "appearanceRate": 0.0445,
+        "avgPlacement": 4.8527,
+        "commanders": [
+          {
+            "appearanceRate": 0.1615,
+            "name": "嬴律",
+            "count": 57,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1388,
+            "name": "常小娥",
+            "count": 49,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1161,
+            "name": "白歌",
+            "count": 41,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5021"
+          },
+          {
+            "id": "5111"
+          },
+          {
+            "id": "1161"
+          },
+          {
+            "id": "5011"
+          }
+        ],
+        "count": 353,
+        "lineupCode": "",
+        "rosterKey": "4|1161|5011|5021|5111",
+        "lineupSize": 4,
+        "top3Rate": 0.1671,
+        "variantCount": 6,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "明世隐",
+            "id": "5011"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "猪八戒",
+            "id": "5111"
+          }
+        ],
+        "lineupKey": "4|1161|5011|5021|5111",
+        "rosterCount": 223,
+        "firstRate": 0.034
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 428.396,
+            "recommendationCount": 2,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4765,
+            "itemIds": [
+              "641010",
+              "643103",
+              "643604"
+            ],
+            "count": 298,
+            "heroId": "1541",
+            "awakenedRate": 0.802,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 929.1173,
+            "recommendationCount": 4,
+            "appearanceRate": 0.6577,
+            "threeItemRate": 0.7755,
+            "itemIds": [
+              "643705",
+              "644116",
+              "810251"
+            ],
+            "count": 196,
+            "heroId": "3121",
+            "awakenedRate": 0.9949,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 272.9765,
+            "recommendationCount": 22,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0369,
+            "itemIds": [
+              "643208"
+            ],
+            "count": 298,
+            "heroId": "1751",
+            "awakenedRate": 0.8591,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 258.5263,
+            "recommendationCount": 9,
+            "appearanceRate": 0.9564,
+            "threeItemRate": 0.0211,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 285,
+            "heroId": "5131",
+            "awakenedRate": 0.7544,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 332.4832,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1141,
+            "itemIds": [],
+            "count": 298,
+            "heroId": "1441",
+            "awakenedRate": 0.9027,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 287.379,
+            "recommendationCount": 0,
+            "appearanceRate": 0.8322,
+            "threeItemRate": 0.1048,
+            "itemIds": [],
+            "count": 248,
+            "heroId": "1311",
+            "awakenedRate": 0.7742,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 294.5399,
+            "recommendationCount": 0,
+            "appearanceRate": 0.547,
+            "threeItemRate": 0.0859,
+            "itemIds": [],
+            "count": 163,
+            "heroId": "1731",
+            "awakenedRate": 0.816,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 289.3,
+            "recommendationCount": 0,
+            "appearanceRate": 0.4698,
+            "threeItemRate": 0.0429,
+            "itemIds": [],
+            "count": 140,
+            "heroId": "1931",
+            "awakenedRate": 0.7643,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0376,
+        "avgPlacement": 2.7785,
+        "commanders": [
+          {
+            "appearanceRate": 0.1577,
+            "name": "嬴律",
+            "count": 47,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1409,
+            "name": "常小娥",
+            "count": 42,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1007,
+            "name": "白歌",
+            "count": 30,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "3121"
+          },
+          {
+            "id": "1541"
+          },
+          {
+            "id": "1441"
+          },
+          {
+            "id": "1311"
+          },
+          {
+            "id": "1751"
+          },
+          {
+            "id": "5131"
+          },
+          {
+            "name": "武则天",
+            "id": "1361"
+          }
+        ],
+        "count": 298,
+        "lineupCode": "",
+        "rosterKey": "8|1311|1441|1541|1731|1751|1931|3121|5131",
+        "lineupSize": 8,
+        "top3Rate": 0.6913,
+        "variantCount": 17,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "李白",
+            "id": "1311"
+          },
+          {
+            "name": "程咬金",
+            "id": "1441"
+          },
+          {
+            "name": "花木兰",
+            "id": "1541"
+          },
+          {
+            "name": "李元芳",
+            "id": "1731"
+          },
+          {
+            "name": "钟馗",
+            "id": "1751"
+          },
+          {
+            "name": "铠",
+            "id": "1931"
+          },
+          {
+            "name": "沈梦溪",
+            "id": "3121"
+          },
+          {
+            "name": "上官婉儿",
+            "id": "5131"
+          }
+        ],
+        "lineupKey": "8|1311|1441|1541|1731|1751|1931|3121|5131",
+        "rosterCount": 34,
+        "firstRate": 0.2248
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 862.9627,
+            "recommendationCount": 10,
+            "appearanceRate": 1,
+            "threeItemRate": 0.7469,
+            "itemIds": [
+              "643304",
+              "643803",
+              "810250"
+            ],
+            "count": 241,
+            "heroId": "5021",
+            "awakenedRate": 1,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 750.9461,
+            "recommendationCount": 7,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4689,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643604"
+            ],
+            "count": 241,
+            "heroId": "5111",
+            "awakenedRate": 0.9336,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 649.2108,
+            "recommendationCount": 6,
+            "appearanceRate": 0.9253,
+            "threeItemRate": 0.4664,
+            "itemIds": [
+              "641015",
+              "643302",
+              "643803"
+            ],
+            "count": 223,
+            "heroId": "1991",
+            "awakenedRate": 0.87,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 559.7469,
+            "recommendationCount": 20,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0954,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 241,
+            "heroId": "5011",
+            "awakenedRate": 0.9253,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 379.1286,
+            "recommendationCount": 60,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0581,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 241,
+            "heroId": "5051",
+            "awakenedRate": 0.5602,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 551.574,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9253,
+            "threeItemRate": 0.0493,
+            "itemIds": [],
+            "count": 223,
+            "heroId": "1161",
+            "awakenedRate": 0.9238,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0304,
+        "avgPlacement": 2.7718,
+        "commanders": [
+          {
+            "appearanceRate": 0.2033,
+            "name": "嬴律",
+            "count": 49,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1535,
+            "name": "常小娥",
+            "count": 37,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1037,
+            "name": "镜",
+            "count": 25,
+            "id": "21"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5021"
+          },
+          {
+            "id": "5111"
+          },
+          {
+            "id": "1991"
+          },
+          {
+            "id": "5011"
+          },
+          {
+            "id": "1161"
+          },
+          {
+            "id": "5051"
+          }
+        ],
+        "count": 241,
+        "lineupCode": "",
+        "rosterKey": "6|1161|1991|5011|5021|5051|5111",
+        "lineupSize": 6,
+        "top3Rate": 0.6598,
+        "variantCount": 10,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "公孙离",
+            "id": "1991"
+          },
+          {
+            "name": "明世隐",
+            "id": "5011"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "猪八戒",
+            "id": "5111"
+          }
+        ],
+        "lineupKey": "6|1161|1991|5011|5021|5051|5111",
+        "rosterCount": 42,
+        "firstRate": 0.3402
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 494.6149,
+            "recommendationCount": 12,
+            "appearanceRate": 0.6851,
+            "threeItemRate": 0.6087,
+            "itemIds": [
+              "643402",
+              "643705",
+              "643803"
+            ],
+            "count": 161,
+            "heroId": "1191",
+            "awakenedRate": 0.9565,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 481.8583,
+            "recommendationCount": 3,
+            "appearanceRate": 0.5106,
+            "threeItemRate": 0.7083,
+            "itemIds": [
+              "643501",
+              "643502",
+              "810251"
+            ],
+            "count": 120,
+            "heroId": "1841",
+            "awakenedRate": 1,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 320.4688,
+            "recommendationCount": 4,
+            "appearanceRate": 0.9532,
+            "threeItemRate": 0.1786,
+            "itemIds": [
+              "643602"
+            ],
+            "count": 224,
+            "heroId": "1131",
+            "awakenedRate": 0.6964,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 353.7991,
+            "recommendationCount": 4,
+            "appearanceRate": 0.9106,
+            "threeItemRate": 0.3037,
+            "itemIds": [
+              "643207"
+            ],
+            "count": 214,
+            "heroId": "5241",
+            "awakenedRate": 0.7757,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 260.417,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1404,
+            "itemIds": [],
+            "count": 235,
+            "heroId": "1121",
+            "awakenedRate": 0.6979,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 250.417,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0553,
+            "itemIds": [],
+            "count": 235,
+            "heroId": "5231",
+            "awakenedRate": 0.8213,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 233.5856,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9447,
+            "threeItemRate": 0.0315,
+            "itemIds": [],
+            "count": 222,
+            "heroId": "1211",
+            "awakenedRate": 0.7207,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0296,
+        "avgPlacement": 3.3617,
+        "commanders": [
+          {
+            "appearanceRate": 0.2043,
+            "name": "嬴律",
+            "count": 48,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.166,
+            "name": "常小娥",
+            "count": 39,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0979,
+            "name": "镜",
+            "count": 23,
+            "id": "21"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1191"
+          },
+          {
+            "id": "5241"
+          },
+          {
+            "id": "1131"
+          },
+          {
+            "id": "1121"
+          },
+          {
+            "id": "5231"
+          },
+          {
+            "id": "1211"
+          }
+        ],
+        "count": 235,
+        "lineupCode": "",
+        "rosterKey": "7|1121|1131|1191|1211|1841|5231|5241",
+        "lineupSize": 7,
+        "top3Rate": 0.4851,
+        "variantCount": 11,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "鲁班七号",
+            "id": "1121"
+          },
+          {
+            "name": "庄周",
+            "id": "1131"
+          },
+          {
+            "name": "扁鹊",
+            "id": "1191"
+          },
+          {
+            "name": "芈月",
+            "id": "1211"
+          },
+          {
+            "name": "蔡文姬",
+            "id": "1841"
+          },
+          {
+            "name": "西施",
+            "id": "5231"
+          },
+          {
+            "name": "蒙犽",
+            "id": "5241"
+          }
+        ],
+        "lineupKey": "7|1121|1131|1191|1211|1841|5231|5241",
+        "rosterCount": 33,
+        "firstRate": 0.2383
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 583.424,
+            "recommendationCount": 5,
+            "appearanceRate": 1,
+            "threeItemRate": 0.47,
+            "itemIds": [
+              "643103",
+              "643304",
+              "643703"
+            ],
+            "count": 217,
+            "heroId": "1671",
+            "awakenedRate": 0.9355,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 566.1567,
+            "recommendationCount": 8,
+            "appearanceRate": 1,
+            "threeItemRate": 0.6636,
+            "itemIds": [
+              "641015",
+              "643302",
+              "643803"
+            ],
+            "count": 217,
+            "heroId": "1991",
+            "awakenedRate": 0.9078,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 589.8894,
+            "recommendationCount": 4,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5806,
+            "itemIds": [
+              "643502",
+              "643602",
+              "643604"
+            ],
+            "count": 217,
+            "heroId": "5111",
+            "awakenedRate": 0.9401,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 625.2995,
+            "recommendationCount": 7,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3502,
+            "itemIds": [
+              "643304"
+            ],
+            "count": 217,
+            "heroId": "5021",
+            "awakenedRate": 0.8848,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 162.6094,
+            "recommendationCount": 10,
+            "appearanceRate": 0.8848,
+            "threeItemRate": 0.0208,
+            "itemIds": [
+              "643603"
+            ],
+            "count": 192,
+            "heroId": "1861",
+            "awakenedRate": 0.3542,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 341.8711,
+            "recommendationCount": 0,
+            "appearanceRate": 0.894,
+            "threeItemRate": 0.299,
+            "itemIds": [],
+            "count": 194,
+            "heroId": "5211",
+            "awakenedRate": 0.3711,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 302.5556,
+            "recommendationCount": 0,
+            "appearanceRate": 0.788,
+            "threeItemRate": 0.0234,
+            "itemIds": [],
+            "count": 171,
+            "heroId": "1161",
+            "awakenedRate": 0.8129,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 364.3517,
+            "recommendationCount": 0,
+            "appearanceRate": 0.6682,
+            "threeItemRate": 0.2828,
+            "itemIds": [],
+            "count": 145,
+            "heroId": "1481",
+            "awakenedRate": 0.3931,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0274,
+        "avgPlacement": 3.4839,
+        "commanders": [
+          {
+            "appearanceRate": 0.2304,
+            "name": "嬴律",
+            "count": 50,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1521,
+            "name": "常小娥",
+            "count": 33,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.106,
+            "name": "白歌",
+            "count": 23,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5021"
+          },
+          {
+            "id": "5111"
+          },
+          {
+            "id": "1671"
+          },
+          {
+            "id": "1991"
+          },
+          {
+            "id": "1481"
+          },
+          {
+            "id": "5211"
+          },
+          {
+            "id": "1161"
+          },
+          {
+            "id": "1861"
+          }
+        ],
+        "count": 217,
+        "lineupCode": "",
+        "rosterKey": "8|1161|1481|1671|1861|1991|5021|5111|5211",
+        "lineupSize": 8,
+        "top3Rate": 0.4977,
+        "variantCount": 9,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "姜子牙",
+            "id": "1481"
+          },
+          {
+            "name": "孙悟空",
+            "id": "1671"
+          },
+          {
+            "name": "太乙真人",
+            "id": "1861"
+          },
+          {
+            "name": "公孙离",
+            "id": "1991"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "猪八戒",
+            "id": "5111"
+          },
+          {
+            "name": "海月",
+            "id": "5211"
+          }
+        ],
+        "lineupKey": "8|1161|1481|1671|1861|1991|5021|5111|5211",
+        "rosterCount": 51,
+        "firstRate": 0.0737
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 383.4131,
+            "recommendationCount": 3,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4413,
+            "itemIds": [
+              "641010",
+              "643103",
+              "643803"
+            ],
+            "count": 213,
+            "heroId": "1541",
+            "awakenedRate": 0.8779,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 895.8261,
+            "recommendationCount": 7,
+            "appearanceRate": 0.8638,
+            "threeItemRate": 0.8261,
+            "itemIds": [
+              "643103",
+              "643803",
+              "810250"
+            ],
+            "count": 184,
+            "heroId": "1961",
+            "awakenedRate": 0.9946,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 261.1455,
+            "recommendationCount": 23,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0469,
+            "itemIds": [
+              "643208"
+            ],
+            "count": 213,
+            "heroId": "1751",
+            "awakenedRate": 0.9484,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 341.3662,
+            "recommendationCount": 5,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1972,
+            "itemIds": [
+              "643502"
+            ],
+            "count": 213,
+            "heroId": "1931",
+            "awakenedRate": 0.939,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 220.7413,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9437,
+            "threeItemRate": 0.01,
+            "itemIds": [],
+            "count": 201,
+            "heroId": "5091",
+            "awakenedRate": 0.8657,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 257.7807,
+            "recommendationCount": 0,
+            "appearanceRate": 0.8779,
+            "threeItemRate": 0.0695,
+            "itemIds": [],
+            "count": 187,
+            "heroId": "1441",
+            "awakenedRate": 0.7433,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 258.9464,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7887,
+            "threeItemRate": 0.244,
+            "itemIds": [],
+            "count": 168,
+            "heroId": "5211",
+            "awakenedRate": 0.5774,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 306.0377,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7465,
+            "threeItemRate": 0.0503,
+            "itemIds": [],
+            "count": 159,
+            "heroId": "1941",
+            "awakenedRate": 0.7736,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0269,
+        "avgPlacement": 3.0235,
+        "commanders": [
+          {
+            "appearanceRate": 0.2019,
+            "name": "嬴律",
+            "count": 43,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1596,
+            "name": "常小娥",
+            "count": 34,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.108,
+            "name": "镜",
+            "count": 23,
+            "id": "21"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1961"
+          },
+          {
+            "id": "1541"
+          },
+          {
+            "id": "1931"
+          },
+          {
+            "id": "1941"
+          },
+          {
+            "id": "1751"
+          },
+          {
+            "id": "5211"
+          },
+          {
+            "id": "1441"
+          },
+          {
+            "id": "5091"
+          }
+        ],
+        "count": 213,
+        "lineupCode": "",
+        "rosterKey": "8|1441|1541|1751|1931|1941|1961|5091|5211",
+        "lineupSize": 8,
+        "top3Rate": 0.6056,
+        "variantCount": 10,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "程咬金",
+            "id": "1441"
+          },
+          {
+            "name": "花木兰",
+            "id": "1541"
+          },
+          {
+            "name": "钟馗",
+            "id": "1751"
+          },
+          {
+            "name": "铠",
+            "id": "1931"
+          },
+          {
+            "name": "苏烈",
+            "id": "1941"
+          },
+          {
+            "name": "百里守约",
+            "id": "1961"
+          },
+          {
+            "name": "盾山",
+            "id": "5091"
+          },
+          {
+            "name": "海月",
+            "id": "5211"
+          }
+        ],
+        "lineupKey": "8|1441|1541|1751|1931|1941|1961|5091|5211",
+        "rosterCount": 71,
+        "firstRate": 0.1831
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 748.445,
+            "recommendationCount": 4,
+            "appearanceRate": 1,
+            "threeItemRate": 0.9424,
+            "itemIds": [
+              "643402",
+              "643501",
+              "643705"
+            ],
+            "count": 191,
+            "heroId": "5271",
+            "awakenedRate": 0.9948,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 523.8645,
+            "recommendationCount": 7,
+            "appearanceRate": 0.8115,
+            "threeItemRate": 0.6839,
+            "itemIds": [
+              "643402",
+              "643705",
+              "643802"
+            ],
+            "count": 155,
+            "heroId": "5041",
+            "awakenedRate": 0.9742,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 391.7016,
+            "recommendationCount": 11,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3141,
+            "itemIds": [
+              "643302"
+            ],
+            "count": 191,
+            "heroId": "1771",
+            "awakenedRate": 0.822,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 357.2313,
+            "recommendationCount": 8,
+            "appearanceRate": 0.7696,
+            "threeItemRate": 0.1905,
+            "itemIds": [
+              "643501"
+            ],
+            "count": 147,
+            "heroId": "1131",
+            "awakenedRate": 0.6259,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 328.089,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0209,
+            "itemIds": [],
+            "count": 191,
+            "heroId": "5231",
+            "awakenedRate": 0.6597,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 356.2513,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1571,
+            "itemIds": [],
+            "count": 191,
+            "heroId": "5251",
+            "awakenedRate": 0.8482,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 376.1556,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9424,
+            "threeItemRate": 0.2,
+            "itemIds": [],
+            "count": 180,
+            "heroId": "1121",
+            "awakenedRate": 0.6389,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 388.0299,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7016,
+            "threeItemRate": 0.0672,
+            "itemIds": [],
+            "count": 134,
+            "heroId": "1211",
+            "awakenedRate": 0.7761,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0241,
+        "avgPlacement": 3.6178,
+        "commanders": [
+          {
+            "appearanceRate": 0.1728,
+            "name": "嬴律",
+            "count": 33,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1414,
+            "name": "常小娥",
+            "count": 27,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1152,
+            "name": "白歌",
+            "count": 22,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5271"
+          },
+          {
+            "id": "5041"
+          },
+          {
+            "id": "1771"
+          },
+          {
+            "id": "1211"
+          },
+          {
+            "id": "1121"
+          },
+          {
+            "id": "1131"
+          },
+          {
+            "id": "5251"
+          },
+          {
+            "id": "5231"
+          }
+        ],
+        "count": 191,
+        "lineupCode": "",
+        "rosterKey": "8|1121|1131|1211|1771|5041|5231|5251|5271",
+        "lineupSize": 8,
+        "top3Rate": 0.4607,
+        "variantCount": 9,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "鲁班七号",
+            "id": "1121"
+          },
+          {
+            "name": "庄周",
+            "id": "1131"
+          },
+          {
+            "name": "芈月",
+            "id": "1211"
+          },
+          {
+            "name": "苍",
+            "id": "1771"
+          },
+          {
+            "name": "米莱狄",
+            "id": "5041"
+          },
+          {
+            "name": "西施",
+            "id": "5231"
+          },
+          {
+            "name": "鲁班大师",
+            "id": "5251"
+          },
+          {
+            "name": "蒙恬",
+            "id": "5271"
+          }
+        ],
+        "lineupKey": "8|1121|1131|1211|1771|5041|5231|5251|5271",
+        "rosterCount": 43,
+        "firstRate": 0.0576
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 645.1629,
+            "recommendationCount": 2,
+            "appearanceRate": 1,
+            "threeItemRate": 0.5955,
+            "itemIds": [
+              "641010",
+              "643304",
+              "810098"
+            ],
+            "count": 178,
+            "heroId": "1931",
+            "awakenedRate": 0.9719,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 582.5046,
+            "recommendationCount": 2,
+            "appearanceRate": 0.6124,
+            "threeItemRate": 0.3578,
+            "itemIds": [
+              "641010",
+              "643304",
+              "643803"
+            ],
+            "count": 109,
+            "heroId": "5021",
+            "awakenedRate": 0.5046,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 491.5281,
+            "recommendationCount": 21,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0449,
+            "itemIds": [
+              "643208"
+            ],
+            "count": 178,
+            "heroId": "1751",
+            "awakenedRate": 0.9663,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 329.9909,
+            "recommendationCount": 26,
+            "appearanceRate": 0.618,
+            "threeItemRate": 0.0455,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 110,
+            "heroId": "5051",
+            "awakenedRate": 0.4455,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 489.3876,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.191,
+            "itemIds": [],
+            "count": 178,
+            "heroId": "1351",
+            "awakenedRate": 0.8371,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 641.7697,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.2247,
+            "itemIds": [],
+            "count": 178,
+            "heroId": "1941",
+            "awakenedRate": 0.9551,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 535.9438,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0337,
+            "itemIds": [],
+            "count": 178,
+            "heroId": "5091",
+            "awakenedRate": 0.9607,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 409.5145,
+            "recommendationCount": 0,
+            "appearanceRate": 0.7753,
+            "threeItemRate": 0.0507,
+            "itemIds": [],
+            "count": 138,
+            "heroId": "5271",
+            "awakenedRate": 0.8406,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0224,
+        "avgPlacement": 3.2303,
+        "commanders": [
+          {
+            "appearanceRate": 0.1742,
+            "name": "嬴律",
+            "count": 31,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1236,
+            "name": "常小娥",
+            "count": 22,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.0899,
+            "name": "白歌",
+            "count": 16,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1931"
+          },
+          {
+            "id": "1941"
+          },
+          {
+            "id": "5021"
+          },
+          {
+            "id": "5091"
+          },
+          {
+            "id": "1751"
+          },
+          {
+            "id": "1351"
+          },
+          {
+            "id": "5271"
+          },
+          {
+            "id": "5051"
+          }
+        ],
+        "count": 178,
+        "lineupCode": "",
+        "rosterKey": "8|1351|1751|1931|1941|5021|5051|5091|5271",
+        "lineupSize": 8,
+        "top3Rate": 0.5337,
+        "variantCount": 8,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "项羽",
+            "id": "1351"
+          },
+          {
+            "name": "钟馗",
+            "id": "1751"
+          },
+          {
+            "name": "铠",
+            "id": "1931"
+          },
+          {
+            "name": "苏烈",
+            "id": "1941"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "盾山",
+            "id": "5091"
+          },
+          {
+            "name": "蒙恬",
+            "id": "5271"
+          }
+        ],
+        "lineupKey": "8|1351|1751|1931|1941|5021|5051|5091|5271",
+        "rosterCount": 35,
+        "firstRate": 0.2584
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 20.9268,
+            "recommendationCount": 1,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0305,
+            "itemIds": [
+              "641002",
+              "641021",
+              "643304"
+            ],
+            "count": 164,
+            "heroId": "5021",
+            "awakenedRate": 0.4268,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 14.4512,
+            "recommendationCount": 3,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0061,
+            "itemIds": [
+              "643703"
+            ],
+            "count": 164,
+            "heroId": "1161",
+            "awakenedRate": 0.122,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 21.9085,
+            "recommendationCount": 10,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0061,
+            "itemIds": [
+              "643703"
+            ],
+            "count": 164,
+            "heroId": "1671",
+            "awakenedRate": 0.0732,
+            "recommendationType": "single_item"
+          }
+        ],
+        "appearanceRate": 0.0207,
+        "avgPlacement": 5.4634,
+        "commanders": [
+          {
+            "appearanceRate": 0.1646,
+            "name": "常小娥",
+            "count": 27,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1524,
+            "name": "嬴律",
+            "count": 25,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1524,
+            "name": "白歌",
+            "count": 25,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1671"
+          },
+          {
+            "id": "5021"
+          },
+          {
+            "id": "1161"
+          }
+        ],
+        "count": 164,
+        "lineupCode": "",
+        "rosterKey": "3|1161|1671|5021",
+        "lineupSize": 3,
+        "top3Rate": 0.0244,
+        "variantCount": 4,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "孙悟空",
+            "id": "1671"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          }
+        ],
+        "lineupKey": "3|1161|1671|5021",
+        "rosterCount": 59,
+        "firstRate": 0.0061
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 239.6903,
+            "recommendationCount": 5,
+            "appearanceRate": 1,
+            "threeItemRate": 0.3677,
+            "itemIds": [
+              "643501",
+              "643502",
+              "643604"
+            ],
+            "count": 155,
+            "heroId": "1871",
+            "awakenedRate": 0.6387,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 334.2556,
+            "recommendationCount": 4,
+            "appearanceRate": 0.5806,
+            "threeItemRate": 0.7333,
+            "itemIds": [
+              "643205",
+              "643703",
+              "643803"
+            ],
+            "count": 90,
+            "heroId": "1991",
+            "awakenedRate": 0.9444,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 158.9226,
+            "recommendationCount": 9,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0129,
+            "itemIds": [
+              "643402"
+            ],
+            "count": 155,
+            "heroId": "5771",
+            "awakenedRate": 0.7677,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 160.6397,
+            "recommendationCount": 55,
+            "appearanceRate": 0.8774,
+            "threeItemRate": 0.0441,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 136,
+            "heroId": "5051",
+            "awakenedRate": 0.6912,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 155.4968,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0,
+            "itemIds": [],
+            "count": 155,
+            "heroId": "1891",
+            "awakenedRate": 0.5161,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 161.1458,
+            "recommendationCount": 0,
+            "appearanceRate": 0.929,
+            "threeItemRate": 0.1042,
+            "itemIds": [],
+            "count": 144,
+            "heroId": "5171",
+            "awakenedRate": 0.4583,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 272.3168,
+            "recommendationCount": 0,
+            "appearanceRate": 0.6516,
+            "threeItemRate": 0.3465,
+            "itemIds": [],
+            "count": 101,
+            "heroId": "1741",
+            "awakenedRate": 0.9703,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0195,
+        "avgPlacement": 4.4581,
+        "commanders": [
+          {
+            "appearanceRate": 0.1677,
+            "name": "常小娥",
+            "count": 26,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1355,
+            "name": "嬴律",
+            "count": 21,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.0968,
+            "name": "瑶妹",
+            "count": 15,
+            "id": "11"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1741"
+          },
+          {
+            "id": "1871"
+          },
+          {
+            "id": "5171"
+          },
+          {
+            "id": "5051"
+          },
+          {
+            "id": "5771"
+          },
+          {
+            "id": "1891"
+          }
+        ],
+        "count": 155,
+        "lineupCode": "",
+        "rosterKey": "7|1741|1871|1891|1991|5051|5171|5771",
+        "lineupSize": 7,
+        "top3Rate": 0.2,
+        "variantCount": 8,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "虞姬",
+            "id": "1741"
+          },
+          {
+            "name": "东皇太一",
+            "id": "1871"
+          },
+          {
+            "name": "鬼谷子",
+            "id": "1891"
+          },
+          {
+            "name": "公孙离",
+            "id": "1991"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "大司命",
+            "id": "5171"
+          },
+          {
+            "name": "少司缘",
+            "id": "5771"
+          }
+        ],
+        "lineupKey": "7|1741|1871|1891|1991|5051|5171|5771",
+        "rosterCount": 34,
+        "firstRate": 0.0323
+      },
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 815.1077,
+            "recommendationCount": 6,
+            "appearanceRate": 1,
+            "threeItemRate": 0.8,
+            "itemIds": [
+              "643202",
+              "643402",
+              "643803"
+            ],
+            "count": 130,
+            "heroId": "1421",
+            "awakenedRate": 0.9923,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 728.4831,
+            "recommendationCount": 3,
+            "appearanceRate": 0.6846,
+            "threeItemRate": 0.4157,
+            "itemIds": [
+              "641010",
+              "643103",
+              "643304"
+            ],
+            "count": 89,
+            "heroId": "5021",
+            "awakenedRate": 0.6517,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 642.9,
+            "recommendationCount": 12,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1308,
+            "itemIds": [
+              "643705"
+            ],
+            "count": 130,
+            "heroId": "1591",
+            "awakenedRate": 0.9077,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 329.6406,
+            "recommendationCount": 8,
+            "appearanceRate": 0.4923,
+            "threeItemRate": 0.0625,
+            "itemIds": [
+              "643403"
+            ],
+            "count": 64,
+            "heroId": "5051",
+            "awakenedRate": 0.5313,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 643.0231,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.2923,
+            "itemIds": [],
+            "count": 130,
+            "heroId": "1661",
+            "awakenedRate": 0.9462,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 633.3462,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0846,
+            "itemIds": [],
+            "count": 130,
+            "heroId": "5031",
+            "awakenedRate": 0.9923,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 566.1308,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1308,
+            "itemIds": [],
+            "count": 130,
+            "heroId": "5041",
+            "awakenedRate": 0.9385,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 571.4923,
+            "recommendationCount": 0,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0923,
+            "itemIds": [],
+            "count": 130,
+            "heroId": "5141",
+            "awakenedRate": 0.9308,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0164,
+        "avgPlacement": 3.1692,
+        "commanders": [
+          {
+            "appearanceRate": 0.2077,
+            "name": "常小娥",
+            "count": 27,
+            "id": "24"
+          },
+          {
+            "appearanceRate": 0.1538,
+            "name": "嬴律",
+            "count": 20,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1154,
+            "name": "白歌",
+            "count": 15,
+            "id": "33"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "1421"
+          },
+          {
+            "id": "5021"
+          },
+          {
+            "id": "1661"
+          },
+          {
+            "id": "1591"
+          },
+          {
+            "id": "5031"
+          },
+          {
+            "id": "5141"
+          },
+          {
+            "id": "5041"
+          }
+        ],
+        "count": 130,
+        "lineupCode": "",
+        "rosterKey": "8|1421|1591|1661|5021|5031|5041|5051|5141",
+        "lineupSize": 8,
+        "top3Rate": 0.5615,
+        "variantCount": 6,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "安琪拉",
+            "id": "1421"
+          },
+          {
+            "name": "朵莉亚",
+            "id": "1591"
+          },
+          {
+            "name": "亚瑟",
+            "id": "1661"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "狂铁",
+            "id": "5031"
+          },
+          {
+            "name": "米莱狄",
+            "id": "5041"
+          },
+          {
+            "name": "瑶",
+            "id": "5051"
+          },
+          {
+            "name": "亚连",
+            "id": "5141"
+          }
+        ],
+        "lineupKey": "8|1421|1591|1661|5021|5031|5041|5051|5141",
+        "rosterCount": 36,
+        "firstRate": 0.0923
+      }
+    ]
+  },
+  "success": true
+}
