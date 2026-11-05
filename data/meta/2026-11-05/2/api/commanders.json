@@ -1,0 +1,175 @@
+{
+  "code": 1,
+  "message": "",
+  "data": {
+    "base": {
+      "count": 720,
+      "avgPlacement": 3.5,
+      "firstRate": 0.1667,
+      "top3Rate": 0.5
+    },
+    "rows": [
+      {
+        "id": "22",
+        "name": "乔汐",
+        "count": 133,
+        "avgPlacement": 2.8571,
+        "firstRate": 0.1805,
+        "top3Rate": 0.7143
+      },
+      {
+        "id": "20",
+        "name": "阿离",
+        "count": 57,
+        "avgPlacement": 3.4211,
+        "firstRate": 0.1754,
+        "top3Rate": 0.4912
+      },
+      {
+        "id": "33",
+        "name": "白歌",
+        "count": 52,
+        "avgPlacement": 4.0577,
+        "firstRate": 0.1731,
+        "top3Rate": 0.3077
+      },
+      {
+        "id": "39",
+        "name": "明先生",
+        "count": 45,
+        "avgPlacement": 3.5111,
+        "firstRate": 0.2,
+        "top3Rate": 0.4889
+      },
+      {
+        "id": "43",
+        "name": "嬴律",
+        "count": 44,
+        "avgPlacement": 3.8182,
+        "firstRate": 0.0682,
+        "top3Rate": 0.3864
+      },
+      {
+        "id": "32",
+        "name": "马可",
+        "count": 42,
+        "avgPlacement": 3.9762,
+        "firstRate": 0.119,
+        "top3Rate": 0.3095
+      },
+      {
+        "id": "40",
+        "name": "闹闹",
+        "count": 42,
+        "avgPlacement": 3.4524,
+        "firstRate": 0.0714,
+        "top3Rate": 0.5476
+      },
+      {
+        "id": "50",
+        "name": "香香",
+        "count": 39,
+        "avgPlacement": 3.3846,
+        "firstRate": 0.1026,
+        "top3Rate": 0.5385
+      },
+      {
+        "id": "24",
+        "name": "常小娥",
+        "count": 35,
+        "avgPlacement": 4.0571,
+        "firstRate": 0.1714,
+        "top3Rate": 0.3714
+      },
+      {
+        "id": "41",
+        "name": "姜导",
+        "count": 34,
+        "avgPlacement": 3.8235,
+        "firstRate": 0.0588,
+        "top3Rate": 0.4412
+      },
+      {
+        "id": "21",
+        "name": "镜",
+        "count": 30,
+        "avgPlacement": 3.5,
+        "firstRate": 0.2,
+        "top3Rate": 0.5333
+      },
+      {
+        "id": "34",
+        "name": "昭君",
+        "count": 29,
+        "avgPlacement": 4.2414,
+        "firstRate": 0.1379,
+        "top3Rate": 0.2414
+      },
+      {
+        "id": "10",
+        "name": "小妲己",
+        "count": 27,
+        "avgPlacement": 2.9259,
+        "firstRate": 0.2222,
+        "top3Rate": 0.6667
+      },
+      {
+        "id": "11",
+        "name": "瑶妹",
+        "count": 25,
+        "avgPlacement": 3.84,
+        "firstRate": 0.24,
+        "top3Rate": 0.4
+      },
+      {
+        "id": "25",
+        "name": "玉环",
+        "count": 25,
+        "avgPlacement": 3.52,
+        "firstRate": 0.44,
+        "top3Rate": 0.44
+      },
+      {
+        "id": "31",
+        "name": "庄小鱼",
+        "count": 21,
+        "avgPlacement": 3.619,
+        "firstRate": 0.0476,
+        "top3Rate": 0.4286
+      },
+      {
+        "id": "38",
+        "name": "孙小宾",
+        "count": 16,
+        "avgPlacement": 3.4375,
+        "firstRate": 0.375,
+        "top3Rate": 0.5
+      },
+      {
+        "id": "51",
+        "name": "安琪拉",
+        "count": 14,
+        "avgPlacement": 2.2857,
+        "firstRate": 0.2857,
+        "top3Rate": 0.8571
+      },
+      {
+        "id": "35",
+        "name": "班叔",
+        "count": 7,
+        "avgPlacement": 3.8571,
+        "firstRate": 0.1429,
+        "top3Rate": 0.5714
+      },
+      {
+        "id": "36",
+        "name": "弈星",
+        "count": 3,
+        "avgPlacement": 3.6667,
+        "firstRate": 0,
+        "top3Rate": 0.6667
+      }
+    ]
+  },
+  "success": true
+}
