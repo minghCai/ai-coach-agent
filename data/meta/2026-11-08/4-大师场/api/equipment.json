@@ -1,0 +1,631 @@
+{
+  "code": 1,
+  "message": "",
+  "data": {
+    "base": {
+      "count": 13326,
+      "avgPlacement": 3.5,
+      "firstRate": 0.1667,
+      "top3Rate": 0.5
+    },
+    "rows": [
+      {
+        "id": "643803",
+        "count": 6391,
+        "avgPlacement": 2.81,
+        "firstRate": 0.2381,
+        "top3Rate": 0.6786
+      },
+      {
+        "id": "643703",
+        "count": 4581,
+        "avgPlacement": 2.9585,
+        "firstRate": 0.2235,
+        "top3Rate": 0.6357
+      },
+      {
+        "id": "643402",
+        "count": 4373,
+        "avgPlacement": 2.7464,
+        "firstRate": 0.2621,
+        "top3Rate": 0.6897
+      },
+      {
+        "id": "643705",
+        "count": 4135,
+        "avgPlacement": 2.6776,
+        "firstRate": 0.2723,
+        "top3Rate": 0.7112
+      },
+      {
+        "id": "643502",
+        "count": 3849,
+        "avgPlacement": 2.789,
+        "firstRate": 0.2476,
+        "top3Rate": 0.6828
+      },
+      {
+        "id": "643103",
+        "count": 3804,
+        "avgPlacement": 2.73,
+        "firstRate": 0.2479,
+        "top3Rate": 0.7029
+      },
+      {
+        "id": "643501",
+        "count": 3602,
+        "avgPlacement": 2.7085,
+        "firstRate": 0.2649,
+        "top3Rate": 0.7027
+      },
+      {
+        "id": "643603",
+        "count": 3073,
+        "avgPlacement": 2.6756,
+        "firstRate": 0.2776,
+        "top3Rate": 0.7081
+      },
+      {
+        "id": "643604",
+        "count": 2773,
+        "avgPlacement": 2.7447,
+        "firstRate": 0.2402,
+        "top3Rate": 0.7028
+      },
+      {
+        "id": "643403",
+        "count": 2174,
+        "avgPlacement": 2.6969,
+        "firstRate": 0.2654,
+        "top3Rate": 0.7065
+      },
+      {
+        "id": "643202",
+        "count": 2160,
+        "avgPlacement": 2.7597,
+        "firstRate": 0.2366,
+        "top3Rate": 0.7009
+      },
+      {
+        "id": "643208",
+        "count": 2134,
+        "avgPlacement": 2.8693,
+        "firstRate": 0.2231,
+        "top3Rate": 0.6631
+      },
+      {
+        "id": "643304",
+        "count": 2069,
+        "avgPlacement": 3.0377,
+        "firstRate": 0.204,
+        "top3Rate": 0.6109
+      },
+      {
+        "id": "641010",
+        "count": 1938,
+        "avgPlacement": 3.0217,
+        "firstRate": 0.1883,
+        "top3Rate": 0.6285
+      },
+      {
+        "id": "643302",
+        "count": 1823,
+        "avgPlacement": 2.8118,
+        "firstRate": 0.2419,
+        "top3Rate": 0.672
+      },
+      {
+        "id": "643802",
+        "count": 1716,
+        "avgPlacement": 2.7197,
+        "firstRate": 0.2582,
+        "top3Rate": 0.6999
+      },
+      {
+        "id": "643105",
+        "count": 1685,
+        "avgPlacement": 2.8166,
+        "firstRate": 0.2368,
+        "top3Rate": 0.6777
+      },
+      {
+        "id": "644116",
+        "count": 1669,
+        "avgPlacement": 2.456,
+        "firstRate": 0.3277,
+        "top3Rate": 0.7681
+      },
+      {
+        "id": "643804",
+        "count": 1405,
+        "avgPlacement": 2.7566,
+        "firstRate": 0.2633,
+        "top3Rate": 0.6804
+      },
+      {
+        "id": "643207",
+        "count": 1392,
+        "avgPlacement": 2.6767,
+        "firstRate": 0.2306,
+        "top3Rate": 0.7335
+      },
+      {
+        "id": "643301",
+        "count": 1328,
+        "avgPlacement": 2.9239,
+        "firstRate": 0.2312,
+        "top3Rate": 0.637
+      },
+      {
+        "id": "641006",
+        "count": 1289,
+        "avgPlacement": 2.3561,
+        "firstRate": 0.3413,
+        "top3Rate": 0.7929
+      },
+      {
+        "id": "643205",
+        "count": 1281,
+        "avgPlacement": 3.2443,
+        "firstRate": 0.1546,
+        "top3Rate": 0.5628
+      },
+      {
+        "id": "643602",
+        "count": 1280,
+        "avgPlacement": 2.9906,
+        "firstRate": 0.1906,
+        "top3Rate": 0.6266
+      },
+      {
+        "id": "643404",
+        "count": 1253,
+        "avgPlacement": 2.9266,
+        "firstRate": 0.2219,
+        "top3Rate": 0.6512
+      },
+      {
+        "id": "641015",
+        "count": 1183,
+        "avgPlacement": 2.9408,
+        "firstRate": 0.2206,
+        "top3Rate": 0.6365
+      },
+      {
+        "id": "644119",
+        "count": 1149,
+        "avgPlacement": 2.6728,
+        "firstRate": 0.2742,
+        "top3Rate": 0.7145
+      },
+      {
+        "id": "643801",
+        "count": 1102,
+        "avgPlacement": 2.5263,
+        "firstRate": 0.2786,
+        "top3Rate": 0.7677
+      },
+      {
+        "id": "643701",
+        "count": 1052,
+        "avgPlacement": 2.7766,
+        "firstRate": 0.23,
+        "top3Rate": 0.7025
+      },
+      {
+        "id": "643504",
+        "count": 974,
+        "avgPlacement": 2.6684,
+        "firstRate": 0.2639,
+        "top3Rate": 0.7136
+      },
+      {
+        "id": "644105",
+        "count": 973,
+        "avgPlacement": 2.4491,
+        "firstRate": 0.3032,
+        "top3Rate": 0.7831
+      },
+      {
+        "id": "810250",
+        "count": 951,
+        "avgPlacement": 2.5468,
+        "firstRate": 0.306,
+        "top3Rate": 0.7319
+      },
+      {
+        "id": "810253",
+        "count": 925,
+        "avgPlacement": 2.5297,
+        "firstRate": 0.2703,
+        "top3Rate": 0.7643
+      },
+      {
+        "id": "643601",
+        "count": 915,
+        "avgPlacement": 2.8415,
+        "firstRate": 0.2164,
+        "top3Rate": 0.6678
+      },
+      {
+        "id": "643206",
+        "count": 906,
+        "avgPlacement": 2.4713,
+        "firstRate": 0.2947,
+        "top3Rate": 0.7792
+      },
+      {
+        "id": "810252",
+        "count": 886,
+        "avgPlacement": 2.5959,
+        "firstRate": 0.2709,
+        "top3Rate": 0.7235
+      },
+      {
+        "id": "643702",
+        "count": 884,
+        "avgPlacement": 3.0204,
+        "firstRate": 0.198,
+        "top3Rate": 0.6233
+      },
+      {
+        "id": "810251",
+        "count": 879,
+        "avgPlacement": 2.3732,
+        "firstRate": 0.3083,
+        "top3Rate": 0.8055
+      },
+      {
+        "id": "810223",
+        "count": 854,
+        "avgPlacement": 2.8876,
+        "firstRate": 0.2026,
+        "top3Rate": 0.6639
+      },
+      {
+        "id": "644106",
+        "count": 771,
+        "avgPlacement": 2.4073,
+        "firstRate": 0.3009,
+        "top3Rate": 0.799
+      },
+      {
+        "id": "810098",
+        "count": 764,
+        "avgPlacement": 3.0131,
+        "firstRate": 0.1806,
+        "top3Rate": 0.6152
+      },
+      {
+        "id": "644109",
+        "count": 758,
+        "avgPlacement": 2.3971,
+        "firstRate": 0.3166,
+        "top3Rate": 0.7929
+      },
+      {
+        "id": "643503",
+        "count": 724,
+        "avgPlacement": 2.529,
+        "firstRate": 0.297,
+        "top3Rate": 0.761
+      },
+      {
+        "id": "644114",
+        "count": 696,
+        "avgPlacement": 2.7414,
+        "firstRate": 0.2543,
+        "top3Rate": 0.6911
+      },
+      {
+        "id": "644115",
+        "count": 692,
+        "avgPlacement": 2.7384,
+        "firstRate": 0.2572,
+        "top3Rate": 0.6922
+      },
+      {
+        "id": "810096",
+        "count": 686,
+        "avgPlacement": 2.9446,
+        "firstRate": 0.1676,
+        "top3Rate": 0.6633
+      },
+      {
+        "id": "644107",
+        "count": 678,
+        "avgPlacement": 2.7625,
+        "firstRate": 0.2301,
+        "top3Rate": 0.7035
+      },
+      {
+        "id": "641009",
+        "count": 676,
+        "avgPlacement": 2.4867,
+        "firstRate": 0.3284,
+        "top3Rate": 0.7604
+      },
+      {
+        "id": "644103",
+        "count": 668,
+        "avgPlacement": 2.3204,
+        "firstRate": 0.3219,
+        "top3Rate": 0.8144
+      },
+      {
+        "id": "810097",
+        "count": 647,
+        "avgPlacement": 3.0526,
+        "firstRate": 0.1731,
+        "top3Rate": 0.6121
+      },
+      {
+        "id": "643104",
+        "count": 642,
+        "avgPlacement": 2.4844,
+        "firstRate": 0.2726,
+        "top3Rate": 0.7804
+      },
+      {
+        "id": "810222",
+        "count": 633,
+        "avgPlacement": 3.0237,
+        "firstRate": 0.158,
+        "top3Rate": 0.613
+      },
+      {
+        "id": "641021",
+        "count": 604,
+        "avgPlacement": 2.9007,
+        "firstRate": 0.2119,
+        "top3Rate": 0.6523
+      },
+      {
+        "id": "810077",
+        "count": 599,
+        "avgPlacement": 2.3923,
+        "firstRate": 0.3255,
+        "top3Rate": 0.778
+      },
+      {
+        "id": "644111",
+        "count": 568,
+        "avgPlacement": 2.5088,
+        "firstRate": 0.2905,
+        "top3Rate": 0.7518
+      },
+      {
+        "id": "644108",
+        "count": 552,
+        "avgPlacement": 2.3986,
+        "firstRate": 0.2971,
+        "top3Rate": 0.7989
+      },
+      {
+        "id": "643303",
+        "count": 545,
+        "avgPlacement": 2.956,
+        "firstRate": 0.2037,
+        "top3Rate": 0.6532
+      },
+      {
+        "id": "641004",
+        "count": 535,
+        "avgPlacement": 2.6,
+        "firstRate": 0.2897,
+        "top3Rate": 0.7252
+      },
+      {
+        "id": "644101",
+        "count": 474,
+        "avgPlacement": 2.6034,
+        "firstRate": 0.2595,
+        "top3Rate": 0.7384
+      },
+      {
+        "id": "644117",
+        "count": 473,
+        "avgPlacement": 2.4165,
+        "firstRate": 0.3044,
+        "top3Rate": 0.7992
+      },
+      {
+        "id": "644104",
+        "count": 459,
+        "avgPlacement": 2.2963,
+        "firstRate": 0.3573,
+        "top3Rate": 0.8126
+      },
+      {
+        "id": "643805",
+        "count": 454,
+        "avgPlacement": 2.5837,
+        "firstRate": 0.2775,
+        "top3Rate": 0.7489
+      },
+      {
+        "id": "644102",
+        "count": 429,
+        "avgPlacement": 2.7902,
+        "firstRate": 0.2331,
+        "top3Rate": 0.6853
+      },
+      {
+        "id": "643704",
+        "count": 416,
+        "avgPlacement": 3.024,
+        "firstRate": 0.1971,
+        "top3Rate": 0.6226
+      },
+      {
+        "id": "810076",
+        "count": 403,
+        "avgPlacement": 2.8511,
+        "firstRate": 0.2556,
+        "top3Rate": 0.6476
+      },
+      {
+        "id": "644118",
+        "count": 389,
+        "avgPlacement": 2.9794,
+        "firstRate": 0.1928,
+        "top3Rate": 0.6144
+      },
+      {
+        "id": "643401",
+        "count": 379,
+        "avgPlacement": 2.7678,
+        "firstRate": 0.2084,
+        "top3Rate": 0.7177
+      },
+      {
+        "id": "644110",
+        "count": 365,
+        "avgPlacement": 2.4192,
+        "firstRate": 0.2959,
+        "top3Rate": 0.7836
+      },
+      {
+        "id": "644113",
+        "count": 358,
+        "avgPlacement": 2.6592,
+        "firstRate": 0.2318,
+        "top3Rate": 0.7151
+      },
+      {
+        "id": "6363182",
+        "count": 352,
+        "avgPlacement": 3.0313,
+        "firstRate": 0.1932,
+        "top3Rate": 0.625
+      },
+      {
+        "id": "644004",
+        "count": 317,
+        "avgPlacement": 2.8833,
+        "firstRate": 0.224,
+        "top3Rate": 0.6435
+      },
+      {
+        "id": "810075",
+        "count": 311,
+        "avgPlacement": 2.9839,
+        "firstRate": 0.2026,
+        "top3Rate": 0.6399
+      },
+      {
+        "id": "644112",
+        "count": 281,
+        "avgPlacement": 2.7117,
+        "firstRate": 0.2456,
+        "top3Rate": 0.7046
+      },
+      {
+        "id": "641007",
+        "count": 235,
+        "avgPlacement": 2.9957,
+        "firstRate": 0.183,
+        "top3Rate": 0.6298
+      },
+      {
+        "id": "641014",
+        "count": 219,
+        "avgPlacement": 2.8037,
+        "firstRate": 0.2283,
+        "top3Rate": 0.6621
+      },
+      {
+        "id": "641001",
+        "count": 206,
+        "avgPlacement": 3.335,
+        "firstRate": 0.1602,
+        "top3Rate": 0.5
+      },
+      {
+        "id": "641002",
+        "count": 202,
+        "avgPlacement": 3.2475,
+        "firstRate": 0.1287,
+        "top3Rate": 0.5495
+      },
+      {
+        "id": "810074",
+        "count": 161,
+        "avgPlacement": 3.6584,
+        "firstRate": 0.0932,
+        "top3Rate": 0.4534
+      },
+      {
+        "id": "641003",
+        "count": 160,
+        "avgPlacement": 2.9938,
+        "firstRate": 0.1813,
+        "top3Rate": 0.6188
+      },
+      {
+        "id": "641005",
+        "count": 90,
+        "avgPlacement": 2.9667,
+        "firstRate": 0.1889,
+        "top3Rate": 0.7
+      },
+      {
+        "id": "643300",
+        "count": 20,
+        "avgPlacement": 2.25,
+        "firstRate": 0.5,
+        "top3Rate": 0.85
+      },
+      {
+        "id": "643200",
+        "count": 15,
+        "avgPlacement": 2.8,
+        "firstRate": 0.4,
+        "top3Rate": 0.6667
+      },
+      {
+        "id": "643100",
+        "count": 13,
+        "avgPlacement": 2.6923,
+        "firstRate": 0.3077,
+        "top3Rate": 0.6923
+      },
+      {
+        "id": "643500",
+        "count": 13,
+        "avgPlacement": 3.6154,
+        "firstRate": 0.2308,
+        "top3Rate": 0.3846
+      },
+      {
+        "id": "643600",
+        "count": 11,
+        "avgPlacement": 3,
+        "firstRate": 0.1818,
+        "top3Rate": 0.6364
+      },
+      {
+        "id": "643800",
+        "count": 11,
+        "avgPlacement": 3.0909,
+        "firstRate": 0.1818,
+        "top3Rate": 0.4545
+      },
+      {
+        "id": "643700",
+        "count": 10,
+        "avgPlacement": 2.2,
+        "firstRate": 0.6,
+        "top3Rate": 0.7
+      },
+      {
+        "id": "643400",
+        "count": 7,
+        "avgPlacement": 1.7143,
+        "firstRate": 0.5714,
+        "top3Rate": 1
+      }
+    ]
+  },
+  "success": true
+}
