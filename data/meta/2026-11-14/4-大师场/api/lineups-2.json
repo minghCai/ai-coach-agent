@@ -1,0 +1,177 @@
+{
+  "code": 1,
+  "message": "",
+  "data": {
+    "sampleCount": 20472,
+    "groupingMode": "rosterSimilarity",
+    "statisticsScope": "allPlayers",
+    "total": 21,
+    "pageSize": 20,
+    "page": 2,
+    "lineups": [
+      {
+        "groupingMode": "rosterSimilarity",
+        "recommendedUnits": [
+          {
+            "avgLevel": 369.8333,
+            "recommendationCount": 1,
+            "appearanceRate": 1,
+            "threeItemRate": 0.4333,
+            "itemIds": [
+              "641002",
+              "641004",
+              "643603"
+            ],
+            "count": 60,
+            "heroId": "5021",
+            "awakenedRate": 0.6833,
+            "recommendationType": "three_item"
+          },
+          {
+            "avgLevel": 251.3667,
+            "recommendationCount": 2,
+            "appearanceRate": 1,
+            "threeItemRate": 0.1167,
+            "itemIds": [
+              "643103"
+            ],
+            "count": 60,
+            "heroId": "1161",
+            "awakenedRate": 0.4833,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 227.4,
+            "recommendationCount": 1,
+            "appearanceRate": 1,
+            "threeItemRate": 0.0833,
+            "itemIds": [
+              "641010"
+            ],
+            "count": 60,
+            "heroId": "1671",
+            "awakenedRate": 0.4333,
+            "recommendationType": "single_item"
+          },
+          {
+            "avgLevel": 152.7818,
+            "recommendationCount": 0,
+            "appearanceRate": 0.9167,
+            "threeItemRate": 0.0364,
+            "itemIds": [],
+            "count": 55,
+            "heroId": "5061",
+            "awakenedRate": 0.4727,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 206.5769,
+            "recommendationCount": 0,
+            "appearanceRate": 0.8667,
+            "threeItemRate": 0.0962,
+            "itemIds": [],
+            "count": 52,
+            "heroId": "1501",
+            "awakenedRate": 0.2692,
+            "recommendationType": "none"
+          },
+          {
+            "avgLevel": 207.4286,
+            "recommendationCount": 0,
+            "appearanceRate": 0.8167,
+            "threeItemRate": 0.1633,
+            "itemIds": [],
+            "count": 49,
+            "heroId": "1461",
+            "awakenedRate": 0.4082,
+            "recommendationType": "none"
+          }
+        ],
+        "appearanceRate": 0.0176,
+        "avgPlacement": 4.6667,
+        "commanders": [
+          {
+            "appearanceRate": 0.2167,
+            "name": "嬴律",
+            "count": 13,
+            "id": "43"
+          },
+          {
+            "appearanceRate": 0.1,
+            "name": "瑶妹",
+            "count": 6,
+            "id": "11"
+          },
+          {
+            "appearanceRate": 0.1,
+            "name": "常小娥",
+            "count": 6,
+            "id": "24"
+          }
+        ],
+        "coreHeroes": [
+          {
+            "id": "5021"
+          },
+          {
+            "id": "1161"
+          },
+          {
+            "id": "1671"
+          },
+          {
+            "id": "1461"
+          },
+          {
+            "id": "1501"
+          },
+          {
+            "id": "5061"
+          }
+        ],
+        "count": 60,
+        "lineupCode": "",
+        "rosterKey": "6|1161|1461|1501|1671|5021|5061",
+        "lineupSize": 6,
+        "mostUsedInitialPack": {
+          "appearanceRate": 0.5439,
+          "count": 31,
+          "id": "122"
+        },
+        "top3Rate": 0.2,
+        "variantCount": 7,
+        "statisticsScope": "allPlayers",
+        "heroes": [
+          {
+            "name": "阿轲",
+            "id": "1161"
+          },
+          {
+            "name": "露娜",
+            "id": "1461"
+          },
+          {
+            "name": "韩信",
+            "id": "1501"
+          },
+          {
+            "name": "孙悟空",
+            "id": "1671"
+          },
+          {
+            "name": "裴擒虎",
+            "id": "5021"
+          },
+          {
+            "name": "云中君",
+            "id": "5061"
+          }
+        ],
+        "lineupKey": "6|1161|1461|1501|1671|5021|5061",
+        "rosterCount": 10,
+        "firstRate": 0
+      }
+    ]
+  },
+  "success": true
+}
